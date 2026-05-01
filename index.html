@@ -17,37 +17,43 @@
        CUSTOM BLACK & DARK PURPLE THEME OVERRIDE
        ========================================= */
     
-    /* 1. Base Backgrounds & Nuke Global Margins (Kills the top black bar completely) */
-    html, body { margin: 0 !important; padding: 0 !important; background-color: #000000 !important; color: #ffffff !important; }
-    #wrapper { padding: 0 !important; margin: 0 !important; background-color: transparent !important; }
+    /* 1. Base Backgrounds & Absolute Nuke of Global Margins (Kills the top black bar completely) */
+    html, body { margin: 0 !important; padding: 0 !important; top: 0 !important; background-color: #000000 !important; color: #ffffff !important; }
+    #wrapper, #page-wrapper { padding: 0 !important; margin: 0 !important; top: 0 !important; background-color: transparent !important; }
     
     /* 2. Alternating Section Backgrounds */
     .spotlight.style1, .spotlight.style3, .wrapper.style1 { background-color: #100118 !important; }
     .spotlight.style2, .spotlight.style4, .wrapper.style2 { background-color: #000000 !important; }
     
-    /* 3. Text Colors */
-    h1, h2, h3, h4, h5, h6, p, span { color: #ffffff !important; }
+    /* 3. Global Typography Normalization */
+    body, p, li, span, label { font-family: 'Arial', sans-serif !important; font-size: 1.1rem !important; line-height: 1.6 !important; color: #ffffff !important; }
+    h1 { font-size: 4.5rem !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; line-height: 1.1 !important; color: #ffffff !important; }
+    h2 { font-size: 2.25rem !important; font-weight: 700 !important; margin-bottom: 1rem !important; color: #ffffff !important; text-transform: uppercase !important; letter-spacing: 2px !important; }
+    h3 { font-size: 1.5rem !important; font-weight: 600 !important; color: #ffffff !important; }
     
-    /* 4. Button & Accent Colors */
-    input[type="submit"].primary, button.primary, .button.primary {
-        background-color: #3a0359 !important; 
-        color: #ffffff !important;
-        box-shadow: none !important;
+    /* 4. Button & Accent Normalization */
+    .button, input[type="submit"], input[type="button"], button {
+        font-family: 'Arial', sans-serif !important;
+        font-size: 1.1rem !important; /* Larger, more readable font */
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        padding: 0.75rem 2rem !important; /* Thicker padding */
+        height: auto !important;
+        line-height: 1.5 !important;
         border-radius: 0.25rem !important;
+        box-shadow: inset 0 0 0 2px #3a0359 !important; 
+        color: #ffffff !important;
     }
-    .button.primary:hover { background-color: #550580 !important; }
-    .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; border-radius: 0.25rem !important; }
+    .button.primary, input[type="submit"].primary, button.primary {
+        background-color: #3a0359 !important; 
+        box-shadow: none !important;
+    }
     .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
-
-    /* 5. Layout and sizing updates */
-    html { font-size: 110% !important; }
-    body, input, select, textarea { font-size: 1.05rem !important; }
-    h1 { font-size: 5rem !important; line-height: 1.1 !important; margin-bottom: 0.5rem !important; }
-    h2 { font-size: 2.75rem !important; }
-    h3 { font-size: 2rem !important; }
+    .button.primary:hover { background-color: #550580 !important; }
 
     /* =========================================
-       6. THE TEAL LINE NUKE
+       5. THE TEAL LINE NUKE
        ========================================= */
     /* This completely disables the template's hidden grid lines and accent borders */
     *, *::before, *::after { border-color: #3a0359 !important; }
@@ -57,7 +63,7 @@
     }
 
     /* =========================================
-       7. TOP NAVIGATION BAR
+       6. TOP NAVIGATION BAR
        ========================================= */
     .top-nav {
         position: absolute; /* Ensures it ignores all template flow and sits at the very top */
@@ -68,23 +74,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 4rem;
+        padding: 1.25rem 4rem;
         z-index: 1000;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
     .top-nav .nav-left { display: flex; gap: 15px; }
 
     /* =========================================
-       8. TWO-COLUMN INTRO LAYOUT
+       7. TWO-COLUMN INTRO LAYOUT
        ========================================= */
     .intro-wrapper {
         background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
         width: 100%;
-        /* Calculates 100% of screen height MINUS the top nav and bottom project bar, keeping it all on screen */
-        min-height: calc(100vh - 160px); 
+        height: 100vh !important; /* Locks intro to exactly 1 viewport height */
         display: flex;
         flex-direction: column;
         padding-top: 100px; /* Offsets for the top nav bar */
+        box-sizing: border-box; /* Ensures padding doesn't add to 100vh */
         position: relative;
     }
 
@@ -94,29 +100,30 @@
         flex-direction: row;
         width: 100%;
         margin: 0;
-        padding: 4rem 0;
+        padding: 0;
         align-items: center;
         justify-content: space-between;
-        flex-grow: 1;
+        flex-grow: 1; /* Expands to fill the space between the top nav and bottom projects bar */
     }
 
     /* Left Side: Text Elements */
     .intro-text {
-        flex: 1;
+        flex: 1.2;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding-left: 15%; /* Pushed to the right from the edge */
+        padding-left: 15%; /* Perfect 15% margin on the left */
         padding-right: 2rem;
     }
     
     .intro-text .subtitle {
         color: rgba(255, 255, 255, 0.7) !important;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
+        font-size: 1.1rem !important;
+        font-weight: bold !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
     }
 
     .intro-separator {
@@ -129,8 +136,6 @@
 
     .about-blurb {
         color: rgba(255, 255, 255, 0.9) !important;
-        font-size: 1.15rem !important;
-        line-height: 1.6 !important;
     }
 
     /* Right Side: Profile Picture */
@@ -139,13 +144,13 @@
         display: flex;
         justify-content: flex-end; 
         align-items: center;
-        padding-right: 15%; /* Mirrors the text's 15% left padding exactly */
+        padding-right: 15%; /* Perfect 15% margin on the right to mirror the text */
     }
     
     .intro-image img {
         width: 100%;
-        max-width: 460px; /* Large, matching the user request */
-        border-radius: 0.25rem !important; /* Slightly rounded corners */
+        max-width: 650px; /* Massively scaled up */
+        border-radius: 0.25rem !important; 
         border: 4px solid #3a0359;
         box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         object-fit: cover;
@@ -153,16 +158,17 @@
     }
 
     /* =========================================
-       9. NEW PROJECTS TITLE BAR
+       8. NEW PROJECTS TITLE BAR (Docked to bottom)
        ========================================= */
     .projects-bar {
+        margin-top: auto; /* Forces this bar to the absolute bottom of the 100vh flex container */
         background-color: #ffffff !important;
         width: 100%;
         padding: 1.5rem 15%; /* Aligns perfectly with the text and image padding above */
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 4px solid #3a0359; /* Gives it a solid grounding line */
+        border-bottom: 4px solid #3a0359; 
     }
 
     .projects-bar h2 {
@@ -171,28 +177,24 @@
         padding: 0 !important;
         display: flex;
         align-items: center;
-        gap: 12px; /* Space between text and arrow */
-        font-size: 2rem !important;
+        gap: 12px;
     }
 
-    /* Target the FontAwesome Arrow */
     .projects-bar h2 .icon {
-        color: #3a0359 !important; /* Purple arrow */
-        font-size: 1.5rem;
+        color: #3a0359 !important; 
+        font-size: 1.75rem;
     }
 
-    /* The new condensed Sort Button */
+    /* The Sort Button (Condensed and aligned right) */
     .projects-bar .button {
-        font-size: 0.9rem !important;
-        padding: 0 1.5rem !important;
-        height: 2.5rem !important;
-        line-height: 2.5rem !important;
+        font-size: 1rem !important;
+        padding: 0.5rem 1.5rem !important;
         margin: 0 !important;
         width: auto !important;
     }
 
     /* =========================================
-       10. PROJECT IMAGE CONSTRAINT ENGINE
+       9. PROJECT IMAGE CONSTRAINT ENGINE
        ========================================= */
     .spotlight.project-item { display: flex !important; align-items: stretch !important; }
     .spotlight.project-item .content {
@@ -223,13 +225,13 @@
         .top-nav .nav-left { flex-direction: column; width: 100%; }
         .top-nav .button { width: 100%; text-align: center; }
         
-        .intro-wrapper { padding-top: 20px; min-height: auto; }
-        .intro-content-row { flex-direction: column; text-align: center; padding: 2rem 5%; }
+        .intro-wrapper { padding-top: 0; height: auto !important; min-height: 100vh; }
+        .intro-content-row { flex-direction: column; text-align: center; padding: 4rem 5%; }
         .intro-text { align-items: center; text-align: center; padding-left: 0; padding-right: 0; margin-bottom: 3rem; }
         .intro-separator { margin: 0 auto 2rem auto; }
         
         .intro-image { justify-content: center; padding-right: 0; }
-        .intro-image img { max-width: 300px; } 
+        .intro-image img { max-width: 350px; } 
         
         .projects-bar { flex-direction: column; text-align: center; gap: 20px; padding: 2rem 5%; }
         
@@ -265,7 +267,6 @@
             <!-- Left Column: Text -->
             <div class="intro-text">
                 <header>
-                    <!-- Stacked names for a cleaner, block-like layout on the left -->
                     <h1><span class="name-first">Allen</span><br><span class="name-last">Loukiantchenko</span></h1>
                     <p class="subtitle">Mechatronics Engineering | Robotics & Manufacturing</p>
                 </header>
@@ -279,24 +280,23 @@
 
             <!-- Right Column: Picture -->
             <div class="intro-image">
-                <!-- IMPORTANT: Rename "profile_picture.jpg" to match your actual file name! -->
                 <img src="images/profile_picture.jpg" alt="Allen Loukiantchenko" />
             </div>
 
         </div>
+
+        <!-- ==============================================
+             NEW PROJECTS TITLE BAR (Docked Inside Intro)
+             ============================================== -->
+        <div class="projects-bar" id="projects-bar">
+            <h2>My Projects <span class="icon solid fa-arrow-down"></span></h2>
+            
+            <button id="sort-btn" class="button primary">Current Sort: Newest First</button>
+        </div>
     </section>
 
 <!-- ==============================================
-     NEW PROJECTS TITLE BAR
-     ============================================== -->
-    <div class="projects-bar" id="projects-bar">
-        <h2>My Projects <span class="icon solid fa-arrow-down"></span></h2>
-        
-        <button id="sort-btn" class="button primary">Current Sort: Newest First</button>
-    </div>
-
-<!-- ==============================================
-     PROJECT LIST SECTION (All Resume Content Included)
+     PROJECT LIST SECTION
      ============================================== -->
 <div id="projects"> 
 
@@ -380,7 +380,6 @@
 <!-- ==============================================
      CONTACT SECTION
      ============================================== -->
-    <!-- Anchor tag for the 'Contact Me' nav button -->
     <section id="contact">
         <header>
             <h2>Get in touch</h2>
@@ -440,28 +439,22 @@
     
     <!-- Custom Sorting Engine -->
     <script>
-        // The HTML list defaults to Newest -> Oldest. 
         let isNewestFirst = true;
         
         document.getElementById('sort-btn').addEventListener('click', function(e) {
             e.preventDefault();
             isNewestFirst = !isNewestFirst;
             
-            // Updates text to reflect the NEW state the user is looking at
             this.innerText = isNewestFirst ? "Current Sort: Newest First" : "Current Sort: Oldest First";
 
             const list = document.getElementById('projects');
             const projectsArray = Array.from(list.getElementsByClassName('project-item'));
 
-            // Reverse the array order
             projectsArray.reverse();
 
-            // Re-append to DOM and fix the alternating zig-zag layout classes
             projectsArray.forEach((proj, index) => {
-                // Strip old orientation classes
                 proj.classList.remove('orient-right', 'orient-left', 'style1', 'style2', 'style3', 'style4');
                 
-                // Apply new orientation classes dynamically based on their new position
                 if (index % 2 === 0) {
                     proj.classList.add('orient-right', 'style' + ((index % 3) + 1));
                 } else {
