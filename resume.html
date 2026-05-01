@@ -20,22 +20,32 @@
         .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; }
         .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
 
-        /* =========================================
+/* =========================================
            RESUME VIEWER STYLING
            ========================================= */
         .resume-container {
-            max-width: 900px;
-            margin: 0 auto;
+            width: 95vw !important; /* Forces it to use the full viewport width */
+            max-width: 1000px !important; /* Caps it so it doesn't look stretched on ultra-wides */
+            margin: 0 auto !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Perfectly centers the iframe and buttons */
             padding: 40px 20px;
-            text-align: center;
         }
         .pdf-viewer {
             width: 100%;
-            height: 1050px;
+            height: 85vh; /* Takes up 85% of the browser window's height */
+            min-height: 800px;
             border: 2px solid #3a0359;
             border-radius: 8px;
             margin: 30px 0;
             box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+        }
+        ul.actions {
+            display: flex;
+            justify-content: center; /* Forces the buttons to the middle */
+            width: 100%;
+            margin-bottom: 0;
         }
     </style>
 </head>
