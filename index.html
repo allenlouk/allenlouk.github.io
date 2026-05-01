@@ -40,9 +40,7 @@
     
     input[type="submit"].primary:hover,
     button.primary:hover,
-    .button.primary:hover {
-        background-color: #550580 !important; 
-    }
+    .button.primary:hover { background-color: #550580 !important; }
     
     /* 5. Sub-buttons (Outlined) */
     .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; }
@@ -58,146 +56,124 @@
     p, li, label, a { font-size: 1rem !important; }
 
     /* 7. Softer button corners */
-    input[type="button"],
-    input[type="submit"],
-    button,
-    .button {
-        border-radius: 0.25rem !important;
-    }
+    input[type="button"], input[type="submit"], button, .button { border-radius: 0.25rem !important; }
 
-    /* 8. Full-Screen Intro Layout (Pure Black to Deep Purple Gradient) */
-    .intro {
-        position: relative !important;
-        /* Smooth gradient from pitch black on the left to a very dark purple on the right */
-        background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
-        height: 100vh !important;
-        min-height: 100vh !important;
-        display: block !important; 
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-        width: 100% !important;
+    /* 8. Nuke all stray Template Teal Accents & Lines */
+    body::before, body::after, #wrapper::before, #wrapper::after, .intro-wrapper::before, .intro-wrapper::after { 
+        display: none !important; 
+        content: none !important; 
     }
-
-    /* 9. Nuke all stray Template Teal Accents & Lines */
-    #wrapper::after, #wrapper::before, .intro::after, .intro::before { display: none !important; }
     * { border-color: #3a0359 !important; }
 
-    /* Hide the template's default right-side image wrapper */
-    .intro .content { display: none !important; }
-
-    /* Force the header to perfectly overlay the center of the screen */
-    .intro header {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100vw !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        transform: none !important;
-    }
-
-    /* Flex container to perfectly split the first and last name */
-    .intro header h1 {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        margin: 0 0 1rem 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Tightened the padding between names from 15px to 5px */
-    .intro header h1 .name-first {
-        flex: 1 1 50% !important;
-        text-align: right !important;
-        padding-right: 5px !important; 
-        color: #ffffff !important;
-    }
-
-    /* Changed to white so it remains visible on the dark purple background */
-    .intro header h1 .name-last {
-        flex: 1 1 50% !important;
-        text-align: left !important;
-        padding-left: 5px !important; 
-        color: #ffffff !important;
-    }
-
-    /* Subtitle without inversion (since background is uniformly dark) */
-    .intro header p {
-        color: #ffffff !important;
-        margin-bottom: 2rem !important;
-        z-index: 10 !important;
-        text-align: center !important;
-        width: 100% !important;
-    }
-
-    .intro header .actions {
-        display: flex !important;
-        justify-content: center !important;
-        gap: 15px !important;
-        z-index: 10 !important;
-        position: relative !important;
-        width: 100% !important;
+    /* =========================================
+       9. UNIFIED INTRO & TOP NAV LAYOUT
+       ========================================= */
+    
+    /* The master container replacing the old split screen */
+    .intro-wrapper {
+        background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border: none !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 4rem;
+        width: 100%;
+    }
+    .top-nav .nav-left { display: flex; gap: 15px; }
+
+    /* Centered Intro Elements */
+    .intro-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10vh; /* Healthy margin from the top */
+        padding: 0 2rem;
+        text-align: center;
+        flex-grow: 1; /* Pushes the sort button down */
+    }
+
+    .intro-main h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 0.5rem 0;
+        padding: 0;
+    }
+    .intro-main .name-first { padding-right: 5px; color: #ffffff; }
+    .intro-main .name-last { padding-left: 5px; color: #ffffff; }
+    .intro-main p { color: #ffffff !important; margin: 0; }
+
+    /* The Central Separator Line */
+    .intro-separator {
+        width: 100%;
+        max-width: 600px;
+        border: 0;
+        border-top: 2px solid rgba(255, 255, 255, 0.4) !important; /* Soft white line */
+        margin: 2.5rem 0;
+    }
+
+    /* The About Me Blurb */
+    .about-blurb {
+        max-width: 800px;
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 1.15rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Sort Button Container (Now seamlessly inside the gradient) */
+    .sort-container {
+        text-align: center;
+        padding: 4rem 0 3rem 0;
+        width: 100%;
     }
 
     /* =========================================
        10. PROJECT IMAGE CONSTRAINT ENGINE
        ========================================= */
-    .spotlight.project-item {
-        display: flex !important;
-        align-items: stretch !important; /* Forces the image box to match the text box height */
-    }
-
+    .spotlight.project-item { display: flex !important; align-items: stretch !important; }
     .spotlight.project-item .content {
         flex: 1 1 50% !important; 
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        /* The text length inside this box will now dictate the height for the entire row */
     }
-
     .spotlight.project-item .image {
         flex: 1 1 50% !important; 
         position: relative !important;
         padding: 0 !important;
         margin: 0 !important;
     }
-
     .spotlight.project-item .image img {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* Crops cleanly to fill the box without squishing the image */
+        object-fit: cover !important; 
         border-radius: 0 !important;
     }
 
     /* Adjust for mobile screens */
     @media screen and (max-width: 980px) {
-        .intro { background: #000000 !important; }
-        .intro header h1 { flex-direction: column !important; }
-        .intro header h1 .name-first,
-        .intro header h1 .name-last {
-            flex: unset !important;
-            width: 100% !important;
-            text-align: center !important;
-            padding: 0 !important;
-        }
-        .intro header .actions { flex-direction: column !important; align-items: center !important; }
+        .top-nav { flex-direction: column; padding: 1.5rem; gap: 15px; }
+        .top-nav .nav-left { flex-direction: column; width: 100%; }
+        .top-nav .button { width: 100%; text-align: center; }
         
-        /* Mobile overrides for project sections */
+        .intro-main { margin-top: 5vh; }
+        .intro-main h1 { flex-direction: column; }
+        .intro-main .name-first, .intro-main .name-last { padding: 0; }
+        
         .spotlight.project-item { flex-direction: column !important; }
         .spotlight.project-item .image { min-height: 350px !important; }
     }
@@ -208,33 +184,57 @@
         <!-- Wrapper -->
             <div id="wrapper">
 
-<!-- Intro -->
-    <section class="intro">
-        <header>
-            <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
-            <p>Mechatronics Engineering | Robotics & Manufacturing</p>
-            
-            <ul class="actions">
-                <li><a href="#first" class="button primary scrolly">View My Projects</a></li>
-                <li><a href="resume.html" class="button primary">View & Download Resume</a></li>
-            </ul>
-        </header>
+<!-- ==============================================
+     UNIFIED TOP SECTION (Gradient flows entirely through here)
+     ============================================== -->
+    <section class="intro-wrapper">
+        
+        <!-- Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <!-- Links directly to the projects anchor below -->
+                <a href="#projects" class="button primary scrolly">View My Projects</a>
+                <a href="resume.html" class="button primary">View & Download Resume</a>
+            </div>
+            <div class="nav-right">
+                <!-- Links directly to the contact anchor at the bottom -->
+                <a href="#contact" class="button primary scrolly">Contact Me</a>
+            </div>
+        </nav>
+
+        <!-- Centered Intro Content -->
+        <div class="intro-main">
+            <header>
+                <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
+                <p>Mechatronics Engineering | Robotics & Manufacturing</p>
+            </header>
+
+            <!-- White Separator Line -->
+            <hr class="intro-separator" />
+
+            <!-- Quick About Me Blurb -->
+            <div class="about-blurb">
+                <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. Explore my recent projects below.</p>
+            </div>
+        </div>
+
+        <!-- Sort Button (Now part of the seamless background) -->
+        <div class="sort-container">
+            <button id="sort-btn" class="button primary" style="font-size: 1.5rem !important; padding: 1rem 2.5rem !important; height: auto !important; line-height: 1.5 !important; letter-spacing: 1px;">Sort: Oldest to Newest</button>
+        </div>
+
     </section>
 
-<!-- Project Sorting Control Bar -->
-<section id="first" style="background-color: #000000; text-align: center; padding: 4rem 0 2rem 0;">
-    <!-- Sort button massively upscaled -->
-    <button id="sort-btn" class="button primary" style="font-size: 1.5rem !important; padding: 1rem 2.5rem !important; height: auto !important; line-height: 1.5 !important; margin: 0 auto; letter-spacing: 1px;">Sort: Oldest to Newest</button>
-</section>
-
-<!-- Wrap all projects in this container for the sorting script -->
-<div id="project-list">
+<!-- ==============================================
+     PROJECT LIST SECTION
+     ============================================== -->
+<div id="projects"> <!-- Anchor tag for the 'View My Projects' button -->
 
     <!-- 1. OMNI Capstone Project (Newest) -->
     <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
         <div class="content">
             <h2>OMNI Modular Robotic Arm</h2>
-            <p>Designed a 5-DOF modular robotic arm tailored for educational environments...</p>
+            <p>Designed a 5-DOF modular robotic arm tailored for educational environments. Features an adaptable manipulator system utilizing SolidWorks design, 3D printed PETG bushings, and automatic Inverse Kinematics programmed via Raspberry Pi to allow for sub-1-minute physical reconfiguration.</p>
             <ul class="actions stacked">
                 <li><a href="#" class="button">Read Full Case Study</a></li>
             </ul>
@@ -249,10 +249,10 @@
         <div class="content">
             <h2>Able Innovations</h2>
             <p>Mechanical Engineer Intern | May 2025 - Aug 2025</p>
-            <!-- Add your resume bullet points here -->
+            <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, minimizing equipment downtime in medical environments.</p>
         </div>
         <div class="image">
-            <img src="images/able_innovations_photo.jpg" alt="" />
+            <img src="images/able_innovations_photo.png" alt="" />
         </div>
     </section>
 
@@ -261,6 +261,7 @@
         <div class="content">
             <h2>Schaeffler / Vitesco</h2>
             <p>R&D Engineer Intern | Jan 2025 - Apr 2025</p>
+            <p>Designed A and B sample prototypes using Catia and stack-up analysis. Analyzed CMM and durability test data using Minitab to diagnose leakage failures in automotive coolant flow control valves, and calculated performance differences for optimized material selection.</p>
         </div>
         <div class="image">
             <img src="images/pic03.jpg" alt="" />
@@ -272,6 +273,7 @@
         <div class="content">
             <h2>Tesla</h2>
             <p>Process Engineer Intern | Sep 2023 - Dec 2023</p>
+            <p>Designed improved manufacturing jigs using SolidWorks to reduce safety incidents on EV drivetrain assembly lines. Fabricated iterative prototypes using 3D Printing to simplify manufacturing processes, resulting in reduced cycle times for door-line window assembly.</p>
         </div>
         <div class="image">
             <img src="images/pic04.jpg" alt="" />
@@ -280,98 +282,97 @@
 
 </div> <!-- End of Project List -->
 
-                <!-- Get in Touch Section -->
-                    <section>
-                        <header>
-                            <h2>Get in touch</h2>
-                        </header>
-                        <div class="content">
-                            <p><strong>Auctor commodo</strong> interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis.</p>
-                            <form>
-                                <div class="fields">
-                                    <div class="field half">
-                                        <input type="text" name="name" id="name" placeholder="Name" />
-                                    </div>
-                                    <div class="field half">
-                                        <input type="email" name="email" id="email" placeholder="Email" />
-                                    </div>
-                                    <div class="field">
-                                        <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
-                                    </div>
-                                </div>
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send Message" class="button primary" /></li>
-                                </ul>
-                            </form>
-                        </div>
-                        <footer>
-                            <ul class="items">
-                                <li>
-                                    <h3>Email</h3>
-                                    <a href="#">allen.loukiantchenko@gmail.com</a>
-                                </li>
-                                <li>
-                                    <h3>Phone</h3>
-                                    <a href="#">(647) 949-6867</a>
-                                </li>
-                                <li>
-                                    <h3>Elsewhere</h3>
-                                    <ul class="icons">
-                                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                                        <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                                        <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                                        <li><a href="#" class="icon brands fa-codepen"><span class="label">Codepen</span></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </footer>
-                    </section>
+<!-- ==============================================
+     CONTACT SECTION
+     ============================================== -->
+    <!-- Anchor tag for the 'Contact Me' nav button -->
+    <section id="contact">
+        <header>
+            <h2>Get in touch</h2>
+        </header>
+        <div class="content">
+            <p><strong>Available for Fall 2026 Opportunities.</strong> Whether you have a question about my robotic arm mechanisms, want to discuss manufacturing optimizations, or have a potential role, my inbox is always open.</p>
+            <form>
+                <div class="fields">
+                    <div class="field half">
+                        <input type="text" name="name" id="name" placeholder="Name" />
+                    </div>
+                    <div class="field half">
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="button primary" /></li>
+                </ul>
+            </form>
+        </div>
+        <footer>
+            <ul class="items">
+                <li>
+                    <h3>Email</h3>
+                    <a href="mailto:allen.loukiantchenko@gmail.com">allen.loukiantchenko@gmail.com</a>
+                </li>
+                <li>
+                    <h3>Phone</h3>
+                    <a href="tel:6479496867">(647) 949-6867</a>
+                </li>
+                <li>
+                    <h3>Elsewhere</h3>
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </footer>
+    </section>
 
-                <!-- Copyright -->
-                    <div class="copyright">&copy; Untitled. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</div>
+<!-- Copyright -->
+    <div class="copyright">&copy; Allen Loukiantchenko. Design adapted from: <a href="https://html5up.net">HTML5 UP</a>.</div>
 
-            </div>
+</div> <!-- End of Wrapper -->
 
-        <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
-            
-            <!-- Custom Sorting Engine -->
-            <script>
-                let isNewestFirst = true;
-                document.getElementById('sort-btn').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    isNewestFirst = !isNewestFirst;
-                    this.innerText = isNewestFirst ? "Sort: Oldest to Newest" : "Sort: Newest to Oldest";
+<!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Custom Sorting Engine -->
+    <script>
+        let isNewestFirst = true;
+        document.getElementById('sort-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            isNewestFirst = !isNewestFirst;
+            this.innerText = isNewestFirst ? "Sort: Oldest to Newest" : "Sort: Newest to Oldest";
 
-                    const list = document.getElementById('project-list');
-                    const projects = Array.from(list.getElementsByClassName('project-item'));
+            const list = document.getElementById('projects');
+            const projectsArray = Array.from(list.getElementsByClassName('project-item'));
 
-                    // Reverse the array order
-                    projects.reverse();
+            // Reverse the array order
+            projectsArray.reverse();
 
-                    // Re-append to DOM and fix the alternating zig-zag layout classes
-                    projects.forEach((proj, index) => {
-                        // Strip old orientation classes
-                        proj.classList.remove('orient-right', 'orient-left', 'style1', 'style2', 'style3', 'style4');
-                        
-                        // Apply new orientation classes dynamically based on their new position
-                        if (index % 2 === 0) {
-                            proj.classList.add('orient-right', 'style' + ((index % 3) + 1));
-                        } else {
-                            proj.classList.add('orient-left', 'style' + ((index % 3) + 1));
-                        }
-                        
-                        list.appendChild(proj);
-                    });
-                });
-            </script>
+            // Re-append to DOM and fix the alternating zig-zag layout classes
+            projectsArray.forEach((proj, index) => {
+                // Strip old orientation classes
+                proj.classList.remove('orient-right', 'orient-left', 'style1', 'style2', 'style3', 'style4');
+                
+                // Apply new orientation classes dynamically based on their new position
+                if (index % 2 === 0) {
+                    proj.classList.add('orient-right', 'style' + ((index % 3) + 1));
+                } else {
+                    proj.classList.add('orient-left', 'style' + ((index % 3) + 1));
+                }
+                
+                list.appendChild(proj);
+            });
+        });
+    </script>
 
     </body>
 </html>
