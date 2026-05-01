@@ -67,29 +67,32 @@
 
     /* 8. First/last name split with center line */
     .intro header h1 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: calc(100vw - 3rem);
-        max-width: none;
-        margin: 0 auto 1rem;
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 0 1.5rem;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 1rem;
+        padding: 0;
+        text-align: center;
     }
 
     .intro header h1 span {
-        display: inline-block;
+        position: absolute;
+        top: 0;
         white-space: nowrap;
-        width: 45%;
+        font-size: inherit;
+        line-height: inherit;
     }
 
     .intro header h1 .name-first {
+        right: 50%;
+        transform: translateX(-0.5rem);
         text-align: right;
     }
 
     .intro header h1 .name-last {
+        left: 50%;
+        transform: translateX(0.5rem);
         text-align: left;
         color: rgba(255, 255, 255, 0.85) !important;
     }
@@ -107,14 +110,16 @@
 
     @media screen and (max-width: 980px) {
         .intro header h1 {
-            flex-direction: column;
-            align-items: center;
             text-align: center;
             padding: 0;
         }
 
         .intro header h1 span {
+            position: static;
+            display: inline-block;
             width: auto;
+            transform: none;
+            text-align: center;
         }
 
         .intro header h1::before {

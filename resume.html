@@ -51,26 +51,31 @@
             margin-bottom: 0;
         }
         .resume-container h1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
+            display: block;
             width: 100%;
             max-width: 1000px;
             margin: 0 auto 1rem;
-            position: relative;
-            padding: 0 1.5rem;
+            padding: 0;
             font-size: 3rem;
             letter-spacing: -0.04em;
+            text-align: center;
         }
         .resume-container h1 span {
-            display: inline-block;
+            position: absolute;
+            top: 0;
             white-space: nowrap;
-            width: 45%;
+            font-size: inherit;
+            line-height: inherit;
         }
         .resume-container h1 .name-first {
+            right: 50%;
+            transform: translateX(-0.5rem);
             text-align: right;
         }
         .resume-container h1 .name-last {
+            left: 50%;
+            transform: translateX(0.5rem);
             text-align: left;
             color: rgba(255, 255, 255, 0.85) !important;
         }
@@ -86,12 +91,15 @@
         }
         @media screen and (max-width: 980px) {
             .resume-container h1 {
-                flex-direction: column;
                 text-align: center;
                 padding: 0;
             }
             .resume-container h1 span {
+                position: static;
+                display: inline-block;
                 width: auto;
+                transform: none;
+                text-align: center;
             }
             .resume-container h1::before {
                 display: none;
