@@ -75,7 +75,7 @@
            3. TOP NAVIGATION
            ========================================= */
         .top-nav {
-            position: fixed; /* Locks to top of viewport */
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
@@ -91,14 +91,14 @@
         .nav-left { display: flex; gap: 15px; }
 
         /* =========================================
-           4. INTRO SECTION (Full Viewport Height)
+           4. INTRO SECTION 
            ========================================= */
         .intro-section {
             background: linear-gradient(to right, var(--bg-dark) 0%, var(--bg-purple) 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-top: 80px; /* Clears the fixed nav bar */
+            padding-top: 80px; 
         }
 
         .intro-content {
@@ -106,11 +106,10 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            flex-grow: 1; /* Pushes the projects bar to the bottom */
+            flex-grow: 1; 
             width: 100%;
         }
 
-        /* 15% Rule applied perfectly here */
         .intro-text {
             flex: 1;
             padding-left: 15%;
@@ -176,7 +175,7 @@
         }
 
         /* =========================================
-           6. PROJECT ZIG-ZAG LAYOUT
+           6. PROJECT ZIG-ZAG LAYOUT & LOGOS
            ========================================= */
         .project-item {
             display: flex;
@@ -184,13 +183,11 @@
             min-height: 500px;
         }
 
-        /* Dynamic classes controlled by JavaScript */
         .project-item.orient-left { flex-direction: row; }
         .project-item.orient-right { flex-direction: row-reverse; }
 
-        /* Alternating Background Colors */
         .project-item:nth-child(odd) .project-content { background-color: var(--bg-dark); }
-        .project-item:nth-child(even) .project-content { background-color: #100118; } /* Very dark purple */
+        .project-item:nth-child(even) .project-content { background-color: #100118; } 
 
         .project-content {
             flex: 1;
@@ -198,6 +195,28 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        /* New Company Logo Header Formatting */
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .project-header h2 {
+            margin-bottom: 0; /* Overrides default margin so it aligns with logo */
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.25rem;
+            object-fit: contain;
+            background-color: #ffffff; /* Gives transparent PNGs a solid white background block */
+            border: 2px solid var(--accent-purple);
+            padding: 2px;
         }
 
         .project-image {
@@ -264,6 +283,7 @@
             
             .projects-bar { flex-direction: column; gap: 20px; padding: 2rem 5%; text-align: center; }
             
+            .project-header { justify-content: center; } /* Center title & logo on mobile */
             .project-item.orient-left, .project-item.orient-right { flex-direction: column; }
             .project-content { padding: 3rem 5%; align-items: center; text-align: center; }
             .project-image { min-height: 350px; }
@@ -273,11 +293,12 @@
         }
     </style>
 </head>
-<body>
+<body id="top"> <!-- Added ID for the Home button to scroll to -->
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="top-nav">
         <div class="nav-left">
+            <a href="#top" class="btn">Home</a>
             <a href="#projects-bar" class="btn">View My Projects</a>
             <a href="resume.html" class="btn">View & Download Resume</a>
         </div>
@@ -313,10 +334,12 @@
     <!-- PROJECT LIST SECTION -->
     <div id="projects"> 
 
-        <!-- 1. OMNI Capstone Project -->
+        <!-- 1. OMNI Capstone Project (No Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>OMNI Modular Robotic Arm</h2>
+                <div class="project-header">
+                    <h2>OMNI Modular Robotic Arm</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Sep 2025 - Mar 2026</p>
                 <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
                 <div><a href="#" class="btn btn-outline">Read Full Case Study</a></div>
@@ -326,10 +349,13 @@
             </div>
         </article>
 
-        <!-- 2. Able Innovations -->
+        <!-- 2. Able Innovations (With Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>Able Innovations</h2>
+                <div class="project-header">
+                    <img src="images/able_logo.png" alt="Able Innovations" class="company-logo" />
+                    <h2>Able Innovations</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical Engineer Intern | May 2025 - Aug 2025</p>
                 <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
             </div>
@@ -338,10 +364,13 @@
             </div>
         </article>
 
-        <!-- 3. Schaeffler / Vitesco -->
+        <!-- 3. Schaeffler / Vitesco (With Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>Schaeffler / Vitesco</h2>
+                <div class="project-header">
+                    <img src="images/schaeffler_logo.png" alt="Schaeffler" class="company-logo" />
+                    <h2>Schaeffler / Vitesco</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">R&D Engineer Intern | Jan 2025 - Apr 2025</p>
                 <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
             </div>
@@ -350,10 +379,12 @@
             </div>
         </article>
 
-        <!-- 4. Stewart Platform -->
+        <!-- 4. Stewart Platform (No Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>Stewart Platform</h2>
+                <div class="project-header">
+                    <h2>Stewart Platform</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Project | Sep 2024 - Dec 2024</p>
                 <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
             </div>
@@ -362,10 +393,13 @@
             </div>
         </article>
 
-        <!-- 5. Tesla -->
+        <!-- 5. Tesla (With Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>Tesla</h2>
+                <div class="project-header">
+                    <img src="images/tesla_logo.png" alt="Tesla" class="company-logo" />
+                    <h2>Tesla</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Process Engineer Intern | Sep 2023 - Dec 2023</p>
                 <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
             </div>
@@ -374,10 +408,13 @@
             </div>
         </article>
         
-        <!-- 6. Polycorp -->
+        <!-- 6. Polycorp (With Logo) -->
         <article class="project-item">
             <div class="project-content">
-                <h2>Polycorp</h2>
+                <div class="project-header">
+                    <img src="images/polycorp_logo.png" alt="Polycorp" class="company-logo" />
+                    <h2>Polycorp</h2>
+                </div>
                 <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical/Manufacturing Intern | Jan 2023 - Apr 2023</p>
                 <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
             </div>
@@ -417,18 +454,15 @@
         function applyZigZag() {
             const projectsArray = Array.from(document.getElementsByClassName('project-item'));
             projectsArray.forEach((proj, index) => {
-                // Clear existing orientation classes
                 proj.classList.remove('orient-right', 'orient-left');
-                // Apply alternating classes
                 if (index % 2 === 0) {
-                    proj.classList.add('orient-left'); // Image on right, text on left
+                    proj.classList.add('orient-left'); 
                 } else {
-                    proj.classList.add('orient-right'); // Image on left, text on right
+                    proj.classList.add('orient-right'); 
                 }
             });
         }
 
-        // Run once on load to establish the initial layout
         applyZigZag();
 
         document.getElementById('sort-btn').addEventListener('click', function(e) {
@@ -440,10 +474,7 @@
             const list = document.getElementById('projects');
             const projectsArray = Array.from(list.getElementsByClassName('project-item'));
 
-            // Reverse the DOM nodes
             projectsArray.reverse().forEach(proj => list.appendChild(proj));
-
-            // Re-apply the zig-zag layout so it always stays perfectly alternating
             applyZigZag();
         });
     </script>

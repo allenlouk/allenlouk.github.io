@@ -35,9 +35,8 @@
         }
 
         /* =========================================
-           2. TYPOGRAPHY & BUTTONS
+           2. TYPOGRAPHY & BUTTONS (Synced with Index)
            ========================================= */
-        /* Exact match to the "My Projects" title styling */
         h2 { 
             font-size: 2.25rem; 
             font-weight: 700; 
@@ -71,41 +70,34 @@
         }
 
         /* =========================================
-           3. TOP NAVIGATION (Exact Match to Index)
+           3. TOP NAVIGATION (Synced with Index)
            ========================================= */
         .top-nav {
             position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px; /* Fixed height to calculate offsets */
             background-color: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 4rem;
+            padding: 1.25rem 4rem; /* Restored to match index exactly */
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .nav-left { display: flex; gap: 15px; }
-        
-        /* Modifying nav buttons for white background */
-        .top-nav .btn {
-            font-size: 0.9rem;
-            padding: 0.6rem 1.5rem;
-        }
 
         /* =========================================
-           4. RESUME VIEWER LAYOUT (No Scroll Grid)
+           4. RESUME VIEWER LAYOUT
            ========================================= */
         .resume-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh; /* Takes full viewport */
-            padding-top: 80px; /* Clears the fixed nav bar */
-            padding-bottom: 20px; /* Cushion at the bottom */
+            height: 100vh; 
+            padding-top: 100px; /* Adjusted slightly to clear the newly sized nav bar */
+            padding-bottom: 20px; 
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -113,21 +105,20 @@
 
         .pdf-viewer {
             width: 95%;
-            /* Flex-grow: 1 forces the iframe to expand and fill ALL remaining space perfectly */
             flex-grow: 1; 
-            min-height: 0; /* Required for flexbox scaling */
+            min-height: 0; 
             border: 4px solid var(--accent-purple);
             border-radius: 0.25rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             margin-bottom: 1.5rem;
-            background-color: #fff; /* Shows white while PDF loads */
+            background-color: #fff; 
         }
 
         /* =========================================
            5. MOBILE RESPONSIVE DESIGN
            ========================================= */
         @media screen and (max-width: 980px) {
-            html, body { overflow: auto; height: auto; } /* Allow scrolling on small phones if needed */
+            html, body { overflow: auto; height: auto; } 
             .top-nav { position: relative; flex-direction: column; height: auto; padding: 1rem; gap: 10px; }
             .nav-left { flex-direction: column; width: 100%; }
             .nav-left .btn, .top-nav > .btn { width: 100%; text-align: center; }
@@ -141,7 +132,7 @@
     <!-- TOP NAVIGATION BAR -->
     <nav class="top-nav">
         <div class="nav-left">
-            <!-- These point back to the specific sections on your main page -->
+            <a href="index.html" class="btn">Home</a>
             <a href="index.html#projects-bar" class="btn">View My Projects</a>
             <a href="resume.html" class="btn">View & Download Resume</a>
         </div>
