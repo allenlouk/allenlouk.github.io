@@ -17,8 +17,11 @@
             background-color: #3a0359 !important; color: #ffffff !important; box-shadow: none !important;
         }
         .button.primary:hover { background-color: #550580 !important; }
-        .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; }
+        .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; border-radius: 0.2rem !important; }
         .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
+
+        html { font-size: 110%; }
+        body, input, select, textarea, p, li, a, h1, h2, h3, h4, h5, h6 { font-size: 1rem !important; }
 
 /* =========================================
            RESUME VIEWER STYLING
@@ -47,12 +50,60 @@
             width: 100%;
             margin-bottom: 0;
         }
+        .resume-container h1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 1rem;
+            position: relative;
+            padding: 0 1.5rem;
+            font-size: 3rem;
+            letter-spacing: -0.04em;
+        }
+        .resume-container h1 span {
+            display: inline-block;
+            white-space: nowrap;
+            width: calc(50% - 1rem);
+        }
+        .resume-container h1 .name-first {
+            text-align: left;
+        }
+        .resume-container h1 .name-last {
+            text-align: right;
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        .resume-container h1::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 15%;
+            bottom: 15%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-50%);
+        }
+        @media screen and (max-width: 980px) {
+            .resume-container h1 {
+                flex-direction: column;
+                text-align: center;
+                padding: 0;
+            }
+            .resume-container h1 span {
+                width: auto;
+            }
+            .resume-container h1::before {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="is-preload">
     <div id="wrapper">
         <section class="wrapper style1">
             <div class="inner resume-container">
+                <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
                 <h2>My Resume</h2>
                 
                 <!-- Back Button -->

@@ -47,6 +47,78 @@
     /* 5. Sub-buttons (Outlined) */
     .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; }
     .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
+
+    /* 6. Layout and sizing updates */
+    html { font-size: 110% !important; }
+    body, input, select, textarea { font-size: 1.05rem !important; }
+    h1 { font-size: 6rem !important; }
+    h2 { font-size: 2.75rem !important; }
+    h3 { font-size: 2rem !important; }
+    h4, h5, h6 { font-size: 1.2rem !important; }
+    p, li, label, a { font-size: 1rem !important; }
+
+    /* 7. Softer button corners */
+    input[type="button"],
+    input[type="submit"],
+    button,
+    .button {
+        border-radius: 0.2rem !important;
+    }
+
+    /* 8. First/last name split with center line */
+    .intro header h1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto 1rem;
+        position: relative;
+        padding: 0 1.5rem;
+    }
+
+    .intro header h1 span {
+        display: inline-block;
+        white-space: nowrap;
+        width: calc(50% - 1rem);
+    }
+
+    .intro header h1 .name-first {
+        text-align: left;
+    }
+
+    .intro header h1 .name-last {
+        text-align: right;
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    .intro header h1::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 15%;
+        bottom: 15%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateX(-50%);
+    }
+
+    @media screen and (max-width: 980px) {
+        .intro header h1 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0;
+        }
+
+        .intro header h1 span {
+            width: auto;
+        }
+
+        .intro header h1::before {
+            display: none;
+        }
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -57,7 +129,7 @@
 <!-- Intro -->
     <section class="intro">
         <header>
-            <h1>Allen Loukiantchenko</h1>
+            <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
             <p>Mechatronics Engineering | Robotics & Manufacturing</p>
             
             <!-- THIS IS YOUR NEW BUTTON BLOCK -->
