@@ -1,134 +1,165 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen Loukiantchenko | Resume</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
     <style>
         /* =========================================
-           CUSTOM BLACK & DARK PURPLE THEME OVERRIDE
+           1. CORE VARIABLES & RESET
            ========================================= */
-        body, #wrapper { background-color: #000000 !important; color: #ffffff !important; }
-        .wrapper.style1 { background-color: #100118 !important; }
-        h1, h2, h3, p, span { color: #ffffff !important; }
-        
-        input[type="submit"].primary, button.primary, .button.primary {
-            background-color: #3a0359 !important; color: #ffffff !important; box-shadow: none !important;
+        :root {
+            --bg-dark: #000000;
+            --bg-purple: #1a032b;
+            --accent-purple: #3a0359;
+            --accent-hover: #550580;
+            --text-main: #ffffff;
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .button.primary:hover { background-color: #550580 !important; }
-        .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; border-radius: 0.25rem !important; }
-        .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
 
-        html { font-size: 110%; }
-        body, input, select, textarea, p, li, a, h1, h2, h3, h4, h5, h6 { font-size: 1rem !important; }
-
-/* =========================================
-           RESUME VIEWER STYLING
-           ========================================= */
-        .resume-container {
-            width: 95vw !important; /* Forces it to use the full viewport width */
-            max-width: 1000px !important; /* Caps it so it doesn't look stretched on ultra-wides */
-            margin: 0 auto !important;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Perfectly centers the iframe and buttons */
-            padding: 40px 20px;
-        }
-        .pdf-viewer {
-            width: 100%;
-            height: 85vh; /* Takes up 85% of the browser window's height */
-            min-height: 800px;
-            border: 2px solid #3a0359;
-            border-radius: 8px;
-            margin: 30px 0;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-        }
-        ul.actions {
-            display: flex;
-            justify-content: center; /* Forces the buttons to the middle */
-            width: 100%;
-            margin-bottom: 0;
-        }
-        .resume-container h1 {
-            position: relative;
-            display: block;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 1rem;
+        * {
+            margin: 0;
             padding: 0;
-            font-size: 3rem;
-            letter-spacing: -0.04em;
+            box-sizing: border-box;
+        }
+
+        /* Lock the body to exactly the viewport height and disable scrolling */
+        html, body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden; 
+            font-family: var(--font-stack);
+            background: linear-gradient(to right, var(--bg-dark) 0%, var(--bg-purple) 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           2. TYPOGRAPHY & BUTTONS
+           ========================================= */
+        /* Exact match to the "My Projects" title styling */
+        h2 { 
+            font-size: 2.25rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--text-main); 
+            margin: 1.5rem 0 1rem 0;
             text-align: center;
         }
-        .resume-container h1 span {
-            position: absolute;
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-stack);
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.85rem 2rem;
+            color: var(--text-main);
+            background-color: var(--accent-purple);
+            border: none;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* =========================================
+           3. TOP NAVIGATION (Exact Match to Index)
+           ========================================= */
+        .top-nav {
+            position: fixed; 
             top: 0;
-            white-space: nowrap;
-            font-size: inherit;
-            line-height: inherit;
+            left: 0;
+            width: 100%;
+            height: 80px; /* Fixed height to calculate offsets */
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .resume-container h1 .name-first {
-            right: 50%;
-            transform: translateX(-0.5rem);
-            text-align: right;
+
+        .nav-left { display: flex; gap: 15px; }
+        
+        /* Modifying nav buttons for white background */
+        .top-nav .btn {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.5rem;
         }
-        .resume-container h1 .name-last {
-            left: 50%;
-            transform: translateX(0.5rem);
-            text-align: left;
-            color: rgba(255, 255, 255, 0.85) !important;
+
+        /* =========================================
+           4. RESUME VIEWER LAYOUT (No Scroll Grid)
+           ========================================= */
+        .resume-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh; /* Takes full viewport */
+            padding-top: 80px; /* Clears the fixed nav bar */
+            padding-bottom: 20px; /* Cushion at the bottom */
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .resume-container h1::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 15%;
-            bottom: 15%;
-            width: 1px;
-            background: #3a0359;
-            transform: translateX(-50%);
+
+        .pdf-viewer {
+            width: 95%;
+            /* Flex-grow: 1 forces the iframe to expand and fill ALL remaining space perfectly */
+            flex-grow: 1; 
+            min-height: 0; /* Required for flexbox scaling */
+            border: 4px solid var(--accent-purple);
+            border-radius: 0.25rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            margin-bottom: 1.5rem;
+            background-color: #fff; /* Shows white while PDF loads */
         }
+
+        /* =========================================
+           5. MOBILE RESPONSIVE DESIGN
+           ========================================= */
         @media screen and (max-width: 980px) {
-            .resume-container h1 {
-                text-align: center;
-                padding: 0;
-            }
-            .resume-container h1 span {
-                position: static;
-                display: inline-block;
-                width: auto;
-                transform: none;
-                text-align: center;
-            }
-            .resume-container h1::before {
-                display: none;
-            }
+            html, body { overflow: auto; height: auto; } /* Allow scrolling on small phones if needed */
+            .top-nav { position: relative; flex-direction: column; height: auto; padding: 1rem; gap: 10px; }
+            .nav-left { flex-direction: column; width: 100%; }
+            .nav-left .btn, .top-nav > .btn { width: 100%; text-align: center; }
+            
+            .resume-wrapper { padding-top: 10px; height: 85vh; }
         }
     </style>
 </head>
-<body class="is-preload">
-    <div id="wrapper">
-        <section class="wrapper style1">
-            <div class="inner resume-container">
-                <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
-                <h2>My Resume</h2>
-                
-                <!-- Back Button -->
-                <ul class="actions" style="justify-content: center;">
-                    <li><a href="index.html" class="button">Back to Home</a></li>
-                </ul>
-                
-                <!-- The Embedded PDF Document -->
-                <iframe src="Allen_Loukiantchenko_Resume.pdf" class="pdf-viewer"></iframe>
+<body>
 
-                <!-- The Direct Download Button -->
-                <ul class="actions" style="justify-content: center;">
-                    <li><a href="Allen_Loukiantchenko_Resume.pdf" download="Allen_Loukiantchenko_Resume.pdf" class="button primary">Download PDF Version</a></li>
-                </ul>
-                
-            </div>
-        </section>
-    </div>
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <!-- These point back to the specific sections on your main page -->
+            <a href="index.html#projects-bar" class="btn">View My Projects</a>
+            <a href="resume.html" class="btn">View & Download Resume</a>
+        </div>
+        <a href="index.html#contact" class="btn">Contact Me</a>
+    </nav>
+
+    <!-- RESUME VIEWPORT CONTENT -->
+    <main class="resume-wrapper">
+        
+        <h2>My Resume</h2>
+        
+        <!-- The Embedded PDF Document -->
+        <iframe src="Allen_Loukiantchenko_Resume.pdf" class="pdf-viewer"></iframe>
+        
+        <!-- The Direct Download Button -->
+        <a href="Allen_Loukiantchenko_Resume.pdf" download="Allen_Loukiantchenko_Resume.pdf" class="btn">Download PDF Version</a>
+        
+    </main>
+
 </body>
 </html>
