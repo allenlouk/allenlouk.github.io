@@ -65,18 +65,23 @@
         border-radius: 0.25rem !important;
     }
 
-/* 8. Split-Screen Intro Layout */
+    /* 8. Split-Screen Intro Layout (Now with Purple-to-Black Gradient) */
     .intro {
         position: relative !important;
-        background: linear-gradient(to right, #000000 50%, #ffffff 50%) !important;
+        /* Gradient: Purple on the far left, smoothly fading to Black at the center, hard split to White on the right */
+        background: linear-gradient(to right, #3a0359 0%, #000000 50%, #ffffff 50%, #ffffff 100%) !important;
         height: 100vh !important;
         min-height: 100vh !important;
-        display: block !important; /* Kills template flexbox conflicts */
+        display: block !important; 
         padding: 0 !important;
         margin: 0 !important;
         overflow: hidden !important;
         width: 100% !important;
     }
+
+    /* 9. Nuke all stray Template Teal Accents & Lines */
+    #wrapper::after, #wrapper::before, .intro::after, .intro::before { display: none !important; }
+    * { border-color: #3a0359 !important; }
 
     /* Hide the template's default right-side image wrapper */
     .intro .content {
@@ -147,7 +152,7 @@
         padding: 0 !important;
     }
 
-    /* Adjust for mobile screens so it stacks vertically instead of splitting */
+    /* Adjust for mobile screens */
     @media screen and (max-width: 980px) {
         .intro { background: #000000 !important; }
         .intro header h1 { flex-direction: column !important; }
@@ -175,51 +180,73 @@
             <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
             <p>Mechatronics Engineering | Robotics & Manufacturing</p>
             
-            <!-- YOUR BUTTON BLOCK -->
+            <!-- Button Block (Both are now solid purple) -->
             <ul class="actions">
                 <li><a href="#first" class="button primary scrolly">View My Projects</a></li>
-                <li><a href="resume.html" class="button">View & Download Resume</a></li>
+                <li><a href="resume.html" class="button primary">View & Download Resume</a></li>
             </ul>
         </header>
     </section>
 
-<!-- 1. OMNI Capstone Project (Newest) -->
-<section id="first" class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-    <div class="content">
-        <h2>OMNI Modular Robotic Arm</h2>
-        <p>Designed a 5-DOF modular robotic arm tailored for educational environments...</p>
-        <ul class="actions stacked">
-            <li><a href="#" class="button">Read Full Case Study</a></li>
-        </ul>
-    </div>
-    <div class="image">
-        <img src="images/your-omni-photo.jpg" alt="OMNI Robotic Arm" />
-    </div>
+<!-- Project Sorting Control Bar (This is where the scrolly button brings you) -->
+<section id="first" style="background-color: #000000; text-align: center; padding: 3rem 0 1rem 0;">
+    <button id="sort-btn" class="button small" style="margin: 0 auto;">Sort: Oldest to Newest</button>
 </section>
 
-<!-- 2. Able Innovations -->
-<section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in">
-    <div class="content">
-        <h2>Able Innovations</h2>
-        <p>Mechanical Engineer Intern | May 2025 - Aug 2025</p>
-        <!-- Add your resume bullet points here -->
-    </div>
-    <div class="image">
-        <img src="images/able-innovations-photo.jpg" alt="" />
-    </div>
-</section>
+<!-- Wrap all projects in this container for the sorting script -->
+<div id="project-list">
 
-<!-- 3. Schaeffler / Vitesco -->
-<section class="spotlight style3 orient-right content-align-left image-position-center onscroll-image-fade-in">
-    <!-- Content goes here -->
-</section>
+    <!-- 1. OMNI Capstone Project (Newest) -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>OMNI Modular Robotic Arm</h2>
+            <p>Designed a 5-DOF modular robotic arm tailored for educational environments...</p>
+            <ul class="actions stacked">
+                <li><a href="#" class="button">Read Full Case Study</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="images/your_omni_photo.jpg" alt="OMNI Robotic Arm" />
+        </div>
+    </section>
 
-<!-- 4. Tesla -->
-<section class="spotlight style4 orient-left content-align-left image-position-center onscroll-image-fade-in">
-    <!-- Content goes here -->
-</section>
+    <!-- 2. Able Innovations -->
+    <section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>Able Innovations</h2>
+            <p>Mechanical Engineer Intern | May 2025 - Aug 2025</p>
+            <!-- Add your resume bullet points here -->
+        </div>
+        <div class="image">
+            <img src="images/able_innovations_photo.jpg" alt="" />
+        </div>
+    </section>
 
-                <!-- Section -->
+    <!-- 3. Schaeffler / Vitesco -->
+    <section class="spotlight style3 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>Schaeffler / Vitesco</h2>
+            <p>R&D Engineer Intern | Jan 2025 - Apr 2025</p>
+        </div>
+        <div class="image">
+            <img src="images/pic03.jpg" alt="" />
+        </div>
+    </section>
+
+    <!-- 4. Tesla -->
+    <section class="spotlight style4 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>Tesla</h2>
+            <p>Process Engineer Intern | Sep 2023 - Dec 2023</p>
+        </div>
+        <div class="image">
+            <img src="images/pic04.jpg" alt="" />
+        </div>
+    </section>
+
+</div> <!-- End of Project List -->
+
+                <!-- Get in Touch Section -->
                     <section>
                         <header>
                             <h2>Get in touch</h2>
@@ -280,6 +307,37 @@
             <script src="assets/js/breakpoints.min.js"></script>
             <script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
+            
+            <!-- Custom Sorting Engine -->
+            <script>
+                let isNewestFirst = true;
+                document.getElementById('sort-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    isNewestFirst = !isNewestFirst;
+                    this.innerText = isNewestFirst ? "Sort: Oldest to Newest" : "Sort: Newest to Oldest";
+
+                    const list = document.getElementById('project-list');
+                    const projects = Array.from(list.getElementsByClassName('project-item'));
+
+                    // Reverse the array order
+                    projects.reverse();
+
+                    // Re-append to DOM and fix the alternating zig-zag layout classes
+                    projects.forEach((proj, index) => {
+                        // Strip old orientation classes
+                        proj.classList.remove('orient-right', 'orient-left', 'style1', 'style2', 'style3', 'style4');
+                        
+                        // Apply new orientation classes dynamically based on their new position
+                        if (index % 2 === 0) {
+                            proj.classList.add('orient-right', 'style' + ((index % 3) + 1));
+                        } else {
+                            proj.classList.add('orient-left', 'style' + ((index % 3) + 1));
+                        }
+                        
+                        list.appendChild(proj);
+                    });
+                });
+            </script>
 
     </body>
 </html>
