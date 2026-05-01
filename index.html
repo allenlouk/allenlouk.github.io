@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen Loukiantchenko | Portfolio</title>
+    
+    <!-- Google Fonts: Montserrat for Headings, Inter for Body Text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
         /* =========================================
            1. CORE VARIABLES & RESET
@@ -13,20 +19,20 @@
             --bg-purple: #1a032b;
             --accent-purple: #3a0359;
             --accent-hover: #550580;
+            --accent-orange: #FF9F1C; /* New Complementary Contrast Color */
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.7);
-            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            /* Custom Typography Variables */
+            --font-headings: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
             width: 100%;
-            font-family: var(--font-stack);
+            font-family: var(--font-body);
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
@@ -36,6 +42,7 @@
         /* =========================================
            2. TYPOGRAPHY & BUTTONS
            ========================================= */
+        h1, h2, h3 { font-family: var(--font-headings); }
         h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
         h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; }
         h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
@@ -43,9 +50,9 @@
 
         .btn {
             display: inline-block;
-            font-family: var(--font-stack);
+            font-family: var(--font-headings); /* Buttons use heading font for punchiness */
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 0.85rem 2rem;
@@ -58,18 +65,9 @@
             transition: background-color 0.2s ease;
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            box-shadow: inset 0 0 0 2px var(--accent-purple);
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(58, 3, 89, 0.2);
-        }
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn-outline { background-color: transparent; box-shadow: inset 0 0 0 2px var(--accent-purple); }
+        .btn-outline:hover { background-color: rgba(58, 3, 89, 0.2); }
 
         /* =========================================
            3. TOP NAVIGATION
@@ -94,7 +92,8 @@
            4. INTRO SECTION 
            ========================================= */
         .intro-section {
-            background: linear-gradient(to right, var(--bg-dark) 0%, var(--bg-purple) 100%);
+            /* Upgraded to an angled gradient for depth */
+            background: linear-gradient(135deg, var(--bg-dark) 30%, var(--bg-purple) 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -125,7 +124,7 @@
 
         .intro-text .subtitle {
             color: var(--text-muted);
-            font-weight: bold;
+            font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -135,7 +134,15 @@
             max-width: 400px;
             border: 0;
             border-top: 2px solid rgba(255, 255, 255, 0.4);
-            margin: 1.5rem 0 2rem 0;
+            margin: 1.5rem 0;
+        }
+
+        /* Formatting for the new availability blurb */
+        .availability-blurb {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0; /* Keeps it tight to the separator */
         }
 
         .intro-image img {
@@ -177,12 +184,7 @@
         /* =========================================
            6. PROJECT ZIG-ZAG LAYOUT & LOGOS
            ========================================= */
-        .project-item {
-            display: flex;
-            align-items: stretch;
-            min-height: 500px;
-        }
-
+        .project-item { display: flex; align-items: stretch; min-height: 500px; }
         .project-item.orient-left { flex-direction: row; }
         .project-item.orient-right { flex-direction: row-reverse; }
 
@@ -197,41 +199,38 @@
             justify-content: center;
         }
 
-        /* New Company Logo Header Formatting */
         .project-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
-        .project-header h2 {
-            margin-bottom: 0; /* Overrides default margin so it aligns with logo */
-        }
+        .project-header h2 { margin-bottom: 0; }
 
         .company-logo {
             width: 50px;
             height: 50px;
             border-radius: 0.25rem;
             object-fit: contain;
-            background-color: #ffffff; /* Gives transparent PNGs a solid white background block */
+            background-color: #ffffff; 
             border: 2px solid var(--accent-purple);
             padding: 2px;
         }
 
-        .project-image {
-            flex: 1;
-            position: relative;
+        /* High contrast metadata class */
+        .project-meta {
+            color: var(--accent-orange);
+            font-family: var(--font-headings);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
 
-        .project-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .project-image { flex: 1; position: relative; }
+        .project-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 
         /* =========================================
            7. CONTACT SECTION
@@ -257,7 +256,7 @@
             border: 2px solid var(--accent-purple);
             border-radius: 0.25rem;
             color: var(--text-main);
-            font-family: var(--font-stack);
+            font-family: var(--font-body);
             font-size: 1rem;
         }
 
@@ -283,7 +282,7 @@
             
             .projects-bar { flex-direction: column; gap: 20px; padding: 2rem 5%; text-align: center; }
             
-            .project-header { justify-content: center; } /* Center title & logo on mobile */
+            .project-header { justify-content: center; } 
             .project-item.orient-left, .project-item.orient-right { flex-direction: column; }
             .project-content { padding: 3rem 5%; align-items: center; text-align: center; }
             .project-image { min-height: 350px; }
@@ -293,7 +292,7 @@
         }
     </style>
 </head>
-<body id="top"> <!-- Added ID for the Home button to scroll to -->
+<body id="top"> 
 
     <!-- TOP NAVIGATION BAR -->
     <nav class="top-nav">
@@ -316,6 +315,9 @@
                 <hr class="intro-separator" />
                 
                 <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. From full-stack CAD design in SolidWorks to deploying Inverse Kinematics on microcontrollers, I specialize in taking physical builds from digital theory to functional reality.</p>
+                
+                <hr class="intro-separator" style="margin-bottom: 1.5rem;" />
+                <p class="availability-blurb">Available for Fall 2026 Opportunities</p>
             </div>
 
             <div class="intro-image">
@@ -334,29 +336,29 @@
     <!-- PROJECT LIST SECTION -->
     <div id="projects"> 
 
-        <!-- 1. OMNI Capstone Project (No Logo) -->
+        <!-- 1. OMNI Capstone Project -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
                     <h2>OMNI Modular Robotic Arm</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Sep 2025 - Mar 2026</p>
+                <p class="project-meta">Sep 2025 - Mar 2026</p>
                 <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
                 <div><a href="#" class="btn btn-outline">Read Full Case Study</a></div>
             </div>
             <div class="project-image">
-                <img src="images/your_omni_photo.jpg" alt="OMNI Robotic Arm" />
+                <img src="images/OMNI_Main_Pic.jpg" alt="OMNI Robotic Arm" />
             </div>
         </article>
 
-        <!-- 2. Able Innovations (With Logo) -->
+        <!-- 2. Able Innovations -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/able_logo.png" alt="Able Innovations" class="company-logo" />
+                    <img src="images/able_logo.jpg" alt="Able Innovations" class="company-logo" />
                     <h2>Able Innovations</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical Engineer Intern | May 2025 - Aug 2025</p>
+                <p class="project-meta">Mechanical Engineer Intern | May 2025 - Aug 2025</p>
                 <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
             </div>
             <div class="project-image">
@@ -364,14 +366,14 @@
             </div>
         </article>
 
-        <!-- 3. Schaeffler / Vitesco (With Logo) -->
+        <!-- 3. Schaeffler / Vitesco -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/schaeffler_logo.png" alt="Schaeffler" class="company-logo" />
+                    <img src="images/schaeffler_logo.jpg" alt="Schaeffler" class="company-logo" />
                     <h2>Schaeffler / Vitesco</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">R&D Engineer Intern | Jan 2025 - Apr 2025</p>
+                <p class="project-meta">R&D Engineer Intern | Jan 2025 - Apr 2025</p>
                 <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
             </div>
             <div class="project-image">
@@ -379,13 +381,13 @@
             </div>
         </article>
 
-        <!-- 4. Stewart Platform (No Logo) -->
+        <!-- 4. Stewart Platform -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
                     <h2>Stewart Platform</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Project | Sep 2024 - Dec 2024</p>
+                <p class="project-meta">Project | Sep 2024 - Dec 2024</p>
                 <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
             </div>
             <div class="project-image">
@@ -393,14 +395,14 @@
             </div>
         </article>
 
-        <!-- 5. Tesla (With Logo) -->
+        <!-- 5. Tesla -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/tesla_logo.png" alt="Tesla" class="company-logo" />
+                    <img src="images/tesla_logo.jpg" alt="Tesla" class="company-logo" />
                     <h2>Tesla</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Process Engineer Intern | Sep 2023 - Dec 2023</p>
+                <p class="project-meta">Process Engineer Intern | Sep 2023 - Dec 2023</p>
                 <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
             </div>
             <div class="project-image">
@@ -408,14 +410,14 @@
             </div>
         </article>
         
-        <!-- 6. Polycorp (With Logo) -->
+        <!-- 6. Polycorp -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/polycorp_logo.png" alt="Polycorp" class="company-logo" />
+                    <img src="images/polycorp_logo.jpg" alt="Polycorp" class="company-logo" />
                     <h2>Polycorp</h2>
                 </div>
-                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical/Manufacturing Intern | Jan 2023 - Apr 2023</p>
+                <p class="project-meta">Mechanical/Manufacturing Intern | Jan 2023 - Apr 2023</p>
                 <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
             </div>
             <div class="project-image">

@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen Loukiantchenko | Resume</title>
+    
+    <!-- Syncing Typography with Index -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
         /* =========================================
            1. CORE VARIABLES & RESET
@@ -14,30 +20,28 @@
             --accent-purple: #3a0359;
             --accent-hover: #550580;
             --text-main: #ffffff;
-            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-headings: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Lock the body to exactly the viewport height and disable scrolling */
         html, body {
             width: 100%;
             height: 100vh;
             overflow: hidden; 
-            font-family: var(--font-stack);
-            background: linear-gradient(to right, var(--bg-dark) 0%, var(--bg-purple) 100%);
+            font-family: var(--font-body);
+            /* Matching angled gradient for visual consistency */
+            background: linear-gradient(135deg, var(--bg-dark) 30%, var(--bg-purple) 100%);
             color: var(--text-main);
             line-height: 1.6;
         }
 
         /* =========================================
-           2. TYPOGRAPHY & BUTTONS (Synced with Index)
+           2. TYPOGRAPHY & BUTTONS
            ========================================= */
         h2 { 
+            font-family: var(--font-headings);
             font-size: 2.25rem; 
             font-weight: 700; 
             text-transform: uppercase; 
@@ -49,9 +53,9 @@
 
         .btn {
             display: inline-block;
-            font-family: var(--font-stack);
+            font-family: var(--font-headings);
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 0.85rem 2rem;
@@ -65,12 +69,10 @@
             text-align: center;
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
+        .btn:hover { background-color: var(--accent-hover); }
 
         /* =========================================
-           3. TOP NAVIGATION (Synced with Index)
+           3. TOP NAVIGATION 
            ========================================= */
         .top-nav {
             position: fixed; 
@@ -81,7 +83,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.25rem 4rem; /* Restored to match index exactly */
+            padding: 1.25rem 4rem; 
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
@@ -96,7 +98,7 @@
             flex-direction: column;
             align-items: center;
             height: 100vh; 
-            padding-top: 100px; /* Adjusted slightly to clear the newly sized nav bar */
+            padding-top: 100px; 
             padding-bottom: 20px; 
             width: 100%;
             max-width: 1200px;
@@ -144,10 +146,8 @@
         
         <h2>My Resume</h2>
         
-        <!-- The Embedded PDF Document -->
         <iframe src="Allen_Loukiantchenko_Resume.pdf" class="pdf-viewer"></iframe>
         
-        <!-- The Direct Download Button -->
         <a href="Allen_Loukiantchenko_Resume.pdf" download="Allen_Loukiantchenko_Resume.pdf" class="btn">Download PDF Version</a>
         
     </main>
