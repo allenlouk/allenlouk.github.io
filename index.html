@@ -17,129 +17,147 @@
        CUSTOM BLACK & DARK PURPLE THEME OVERRIDE
        ========================================= */
     
-    /* 1. Base Backgrounds (Pure Black & Dark Purple) */
+    /* 1. Base Backgrounds */
     body, #wrapper { background-color: #000000 !important; color: #ffffff !important; }
     
     /* 2. Alternating Section Backgrounds */
     .spotlight.style1, .spotlight.style3, .wrapper.style1 { background-color: #100118 !important; }
     .spotlight.style2, .spotlight.style4, .wrapper.style2 { background-color: #000000 !important; }
     
-    /* 3. Text & Header Colors */
+    /* 3. Text Colors */
     h1, h2, h3, h4, h5, h6, p, span { color: #ffffff !important; }
     
     /* 4. Button & Accent Colors */
-    input[type="submit"].primary,
-    input[type="reset"].primary,
-    input[type="button"].primary,
-    button.primary,
-    .button.primary {
+    input[type="submit"].primary, button.primary, .button.primary {
         background-color: #3a0359 !important; 
         color: #ffffff !important;
         box-shadow: none !important;
+        border-radius: 0.25rem !important;
     }
-    
-    input[type="submit"].primary:hover,
-    button.primary:hover,
     .button.primary:hover { background-color: #550580 !important; }
-    
-    /* 5. Sub-buttons (Outlined) */
-    .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; }
+    .button { box-shadow: inset 0 0 0 2px #3a0359 !important; color: #ffffff !important; border-radius: 0.25rem !important; }
     .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
 
-    /* 6. Layout and sizing updates */
+    /* 5. Layout and sizing updates */
     html { font-size: 110% !important; }
     body, input, select, textarea { font-size: 1.05rem !important; }
-    h1 { font-size: 6rem !important; }
+    h1 { font-size: 5rem !important; line-height: 1.1 !important; margin-bottom: 0.5rem !important; }
     h2 { font-size: 2.75rem !important; }
     h3 { font-size: 2rem !important; }
-    h4, h5, h6 { font-size: 1.2rem !important; }
-    p, li, label, a { font-size: 1rem !important; }
 
-    /* 7. Softer button corners */
-    input[type="button"], input[type="submit"], button, .button { border-radius: 0.25rem !important; }
-
-    /* 8. Nuke all stray Template Teal Accents & Lines */
-    body::before, body::after, #wrapper::before, #wrapper::after, .intro-wrapper::before, .intro-wrapper::after { 
+    /* =========================================
+       6. THE TEAL LINE NUKE
+       ========================================= */
+    /* This completely disables the template's hidden grid lines and accent borders */
+    *, *::before, *::after { border-color: #3a0359 !important; }
+    body::before, body::after, #wrapper::before, #wrapper::after, .intro-wrapper::before, .intro-wrapper::after, .spotlight::before, .spotlight::after { 
         display: none !important; 
         content: none !important; 
     }
-    * { border-color: #3a0359 !important; }
 
     /* =========================================
-       9. UNIFIED INTRO & TOP NAV LAYOUT
+       7. TOP NAVIGATION BAR
        ========================================= */
-    
-    /* The master container replacing the old split screen */
+    .top-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 4rem;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .top-nav .nav-left { display: flex; gap: 15px; }
+
+    /* =========================================
+       8. TWO-COLUMN INTRO LAYOUT
+       ========================================= */
     .intro-wrapper {
         background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
         width: 100%;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        padding-top: 120px; /* Offsets for the top nav bar */
         position: relative;
-        border: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 
-    /* Top Navigation Bar */
-    .top-nav {
+    /* Central Container limiting max width */
+    .intro-content-row {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem 4rem;
+        flex-direction: row;
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 2rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
     }
-    .top-nav .nav-left { display: flex; gap: 15px; }
 
-    /* Centered Intro Elements */
-    .intro-main {
+    /* Left Side: Text Elements */
+    .intro-text {
+        flex: 1.2;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-top: 10vh; /* Healthy margin from the top */
-        padding: 0 2rem;
-        text-align: center;
-        flex-grow: 1; /* Pushes the sort button down */
+        align-items: flex-start;
+        text-align: left;
+        padding-right: 3rem;
+    }
+    
+    .intro-text .subtitle {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
     }
 
-    .intro-main h1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 0 0.5rem 0;
-        padding: 0;
-    }
-    .intro-main .name-first { padding-right: 5px; color: #ffffff; }
-    .intro-main .name-last { padding-left: 5px; color: #ffffff; }
-    .intro-main p { color: #ffffff !important; margin: 0; }
-
-    /* The Central Separator Line */
     .intro-separator {
         width: 100%;
-        max-width: 600px;
+        max-width: 400px;
         border: 0;
-        border-top: 2px solid rgba(255, 255, 255, 0.4) !important; /* Soft white line */
-        margin: 2.5rem 0;
+        border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
+        margin: 0 0 2rem 0;
     }
 
-    /* The About Me Blurb */
     .about-blurb {
-        max-width: 800px;
         color: rgba(255, 255, 255, 0.9) !important;
         font-size: 1.15rem !important;
         line-height: 1.6 !important;
     }
 
-    /* Sort Button Container (Now seamlessly inside the gradient) */
+    /* Right Side: Profile Picture */
+    .intro-image {
+        flex: 0.8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .intro-image img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 50%; /* Circle frame */
+        border: 4px solid #3a0359; /* Purple accent border */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        object-fit: cover;
+        aspect-ratio: 1/1; /* Forces a perfect circle */
+    }
+
+    /* Sort Button Container */
     .sort-container {
         text-align: center;
-        padding: 4rem 0 3rem 0;
+        padding: 3rem 0;
         width: 100%;
     }
 
     /* =========================================
-       10. PROJECT IMAGE CONSTRAINT ENGINE
+       9. PROJECT IMAGE CONSTRAINT ENGINE
        ========================================= */
     .spotlight.project-item { display: flex !important; align-items: stretch !important; }
     .spotlight.project-item .content {
@@ -166,13 +184,15 @@
 
     /* Adjust for mobile screens */
     @media screen and (max-width: 980px) {
-        .top-nav { flex-direction: column; padding: 1.5rem; gap: 15px; }
+        .top-nav { position: relative; flex-direction: column; padding: 1.5rem; gap: 15px; text-align: center;}
         .top-nav .nav-left { flex-direction: column; width: 100%; }
         .top-nav .button { width: 100%; text-align: center; }
         
-        .intro-main { margin-top: 5vh; }
-        .intro-main h1 { flex-direction: column; }
-        .intro-main .name-first, .intro-main .name-last { padding: 0; }
+        .intro-wrapper { padding-top: 20px; }
+        .intro-content-row { flex-direction: column; text-align: center; }
+        .intro-text { align-items: center; text-align: center; padding-right: 0; margin-bottom: 3rem; }
+        .intro-separator { margin: 0 auto 2rem auto; }
+        .intro-image img { max-width: 250px; }
         
         .spotlight.project-item { flex-direction: column !important; }
         .spotlight.project-item .image { min-height: 350px !important; }
@@ -185,56 +205,65 @@
             <div id="wrapper">
 
 <!-- ==============================================
-     UNIFIED TOP SECTION (Gradient flows entirely through here)
+     TOP NAVIGATION BAR
+     ============================================== -->
+    <!-- The user asked for a white bar. If you want to change it, simply update the background-color in the .top-nav CSS class above! -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="#projects" class="button primary scrolly">View My Projects</a>
+            <a href="resume.html" class="button primary">View & Download Resume</a>
+        </div>
+        <div class="nav-right">
+            <a href="#contact" class="button primary scrolly">Contact Me</a>
+        </div>
+    </nav>
+
+<!-- ==============================================
+     UNIFIED INTRO SECTION (2-Column Layout)
      ============================================== -->
     <section class="intro-wrapper">
-        
-        <!-- Navigation Bar -->
-        <nav class="top-nav">
-            <div class="nav-left">
-                <!-- Links directly to the projects anchor below -->
-                <a href="#projects" class="button primary scrolly">View My Projects</a>
-                <a href="resume.html" class="button primary">View & Download Resume</a>
-            </div>
-            <div class="nav-right">
-                <!-- Links directly to the contact anchor at the bottom -->
-                <a href="#contact" class="button primary scrolly">Contact Me</a>
-            </div>
-        </nav>
+        <div class="intro-content-row">
+            
+            <!-- Left Column: Text -->
+            <div class="intro-text">
+                <header>
+                    <!-- Stacked names for a cleaner, block-like layout on the left -->
+                    <h1><span class="name-first">Allen</span><br><span class="name-last">Loukiantchenko</span></h1>
+                    <p class="subtitle">Mechatronics Engineering | Robotics & Manufacturing</p>
+                </header>
 
-        <!-- Centered Intro Content -->
-        <div class="intro-main">
-            <header>
-                <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
-                <p>Mechatronics Engineering | Robotics & Manufacturing</p>
-            </header>
+                <hr class="intro-separator" />
 
-            <!-- White Separator Line -->
-            <hr class="intro-separator" />
-
-            <!-- Quick About Me Blurb -->
-            <div class="about-blurb">
-                <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. Explore my recent projects below.</p>
+                <div class="about-blurb">
+                    <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. From full-stack CAD design in SolidWorks to deploying Inverse Kinematics on microcontrollers, I specialize in taking physical builds from digital theory to functional reality.</p>
+                </div>
             </div>
+
+            <!-- Right Column: Picture -->
+            <div class="intro-image">
+                <!-- IMPORTANT: Rename "profile_picture.jpg" to match your actual file name! -->
+                <img src="images/profile_picture.jpg" alt="Allen Loukiantchenko" />
+            </div>
+
         </div>
 
-        <!-- Sort Button (Now part of the seamless background) -->
+        <!-- Sort Button Container -->
         <div class="sort-container">
-            <button id="sort-btn" class="button primary" style="font-size: 1.5rem !important; padding: 1rem 2.5rem !important; height: auto !important; line-height: 1.5 !important; letter-spacing: 1px;">Sort: Oldest to Newest</button>
+            <button id="sort-btn" class="button primary" style="font-size: 1.5rem !important; padding: 1rem 2.5rem !important; height: auto !important; line-height: 1.5 !important; letter-spacing: 1px;">Current Sort: Newest First</button>
         </div>
-
     </section>
 
 <!-- ==============================================
-     PROJECT LIST SECTION
+     PROJECT LIST SECTION (All Resume Content Included)
      ============================================== -->
-<div id="projects"> <!-- Anchor tag for the 'View My Projects' button -->
+<div id="projects"> 
 
-    <!-- 1. OMNI Capstone Project (Newest) -->
+    <!-- 1. OMNI Capstone Project -->
     <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
         <div class="content">
             <h2>OMNI Modular Robotic Arm</h2>
-            <p>Designed a 5-DOF modular robotic arm tailored for educational environments. Features an adaptable manipulator system utilizing SolidWorks design, 3D printed PETG bushings, and automatic Inverse Kinematics programmed via Raspberry Pi to allow for sub-1-minute physical reconfiguration.</p>
+            <p>Sep 2025 - Mar 2026</p>
+            <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
             <ul class="actions stacked">
                 <li><a href="#" class="button">Read Full Case Study</a></li>
             </ul>
@@ -249,10 +278,10 @@
         <div class="content">
             <h2>Able Innovations</h2>
             <p>Mechanical Engineer Intern | May 2025 - Aug 2025</p>
-            <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, minimizing equipment downtime in medical environments.</p>
+            <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
         </div>
         <div class="image">
-            <img src="images/able_innovations_photo.png" alt="" />
+            <img src="images/able_innovations_photo.jpg" alt="" />
         </div>
     </section>
 
@@ -261,22 +290,46 @@
         <div class="content">
             <h2>Schaeffler / Vitesco</h2>
             <p>R&D Engineer Intern | Jan 2025 - Apr 2025</p>
-            <p>Designed A and B sample prototypes using Catia and stack-up analysis. Analyzed CMM and durability test data using Minitab to diagnose leakage failures in automotive coolant flow control valves, and calculated performance differences for optimized material selection.</p>
+            <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
         </div>
         <div class="image">
             <img src="images/pic03.jpg" alt="" />
         </div>
     </section>
 
-    <!-- 4. Tesla -->
+    <!-- 4. Stewart Platform (Newly Added) -->
     <section class="spotlight style4 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>Stewart Platform</h2>
+            <p>Project | Sep 2024 - Dec 2024</p>
+            <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
+        </div>
+        <div class="image">
+            <img src="images/stewart_platform.jpg" alt="Stewart Platform" />
+        </div>
+    </section>
+
+    <!-- 5. Tesla -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
         <div class="content">
             <h2>Tesla</h2>
             <p>Process Engineer Intern | Sep 2023 - Dec 2023</p>
-            <p>Designed improved manufacturing jigs using SolidWorks to reduce safety incidents on EV drivetrain assembly lines. Fabricated iterative prototypes using 3D Printing to simplify manufacturing processes, resulting in reduced cycle times for door-line window assembly.</p>
+            <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
         </div>
         <div class="image">
             <img src="images/pic04.jpg" alt="" />
+        </div>
+    </section>
+    
+    <!-- 6. Polycorp (Newly Added) -->
+    <section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
+        <div class="content">
+            <h2>Polycorp</h2>
+            <p>Mechanical/Manufacturing Engineer Intern | Jan 2023 - Apr 2023</p>
+            <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
+        </div>
+        <div class="image">
+            <img src="images/polycorp.jpg" alt="Polycorp Manufacturing" />
         </div>
     </section>
 
@@ -345,11 +398,15 @@
     
     <!-- Custom Sorting Engine -->
     <script>
+        // The HTML list defaults to Newest -> Oldest. 
         let isNewestFirst = true;
+        
         document.getElementById('sort-btn').addEventListener('click', function(e) {
             e.preventDefault();
             isNewestFirst = !isNewestFirst;
-            this.innerText = isNewestFirst ? "Sort: Oldest to Newest" : "Sort: Newest to Oldest";
+            
+            // Updates text to reflect the NEW state the user is looking at
+            this.innerText = isNewestFirst ? "Current Sort: Newest First" : "Current Sort: Oldest First";
 
             const list = document.getElementById('projects');
             const projectsArray = Array.from(list.getElementsByClassName('project-item'));
