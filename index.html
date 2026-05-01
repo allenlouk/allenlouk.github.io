@@ -27,13 +27,13 @@
     /* 3. Text & Header Colors */
     h1, h2, h3, h4, h5, h6, p, span { color: #ffffff !important; }
     
-    /* 4. Button & Accent Colors (Slightly lighter purple for visibility/clicking) */
+    /* 4. Button & Accent Colors */
     input[type="submit"].primary,
     input[type="reset"].primary,
     input[type="button"].primary,
     button.primary,
     .button.primary {
-        background-color: #3a0359 !important; /* Visible Purple */
+        background-color: #3a0359 !important; 
         color: #ffffff !important;
         box-shadow: none !important;
     }
@@ -41,7 +41,7 @@
     input[type="submit"].primary:hover,
     button.primary:hover,
     .button.primary:hover {
-        background-color: #550580 !important; /* Brighter on hover */
+        background-color: #550580 !important; 
     }
     
     /* 5. Sub-buttons (Outlined) */
@@ -65,11 +65,11 @@
         border-radius: 0.25rem !important;
     }
 
-    /* 8. Split-Screen Intro Layout (Now with Purple-to-Black Gradient) */
+    /* 8. Full-Screen Intro Layout (Pure Black to Deep Purple Gradient) */
     .intro {
         position: relative !important;
-        /* Gradient: Purple on the far left, smoothly fading to Black at the center, hard split to White on the right */
-        background: linear-gradient(to right, #3a0359 0%, #000000 50%, #ffffff 50%, #ffffff 100%) !important;
+        /* Smooth gradient from pitch black on the left to a very dark purple on the right */
+        background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
         height: 100vh !important;
         min-height: 100vh !important;
         display: block !important; 
@@ -84,9 +84,7 @@
     * { border-color: #3a0359 !important; }
 
     /* Hide the template's default right-side image wrapper */
-    .intro .content {
-        display: none !important;
-    }
+    .intro .content { display: none !important; }
 
     /* Force the header to perfectly overlay the center of the screen */
     .intro header {
@@ -117,24 +115,25 @@
         padding: 0 !important;
     }
 
+    /* Tightened the padding between names from 15px to 5px */
     .intro header h1 .name-first {
         flex: 1 1 50% !important;
         text-align: right !important;
-        padding-right: 15px !important; 
+        padding-right: 5px !important; 
         color: #ffffff !important;
     }
 
+    /* Changed to white so it remains visible on the dark purple background */
     .intro header h1 .name-last {
         flex: 1 1 50% !important;
         text-align: left !important;
-        padding-left: 15px !important; 
-        color: #000000 !important;
+        padding-left: 5px !important; 
+        color: #ffffff !important;
     }
 
-    /* Subtitle uses mix-blend-mode to automatically invert colors on the split */
+    /* Subtitle without inversion (since background is uniformly dark) */
     .intro header p {
         color: #ffffff !important;
-        mix-blend-mode: difference !important;
         margin-bottom: 2rem !important;
         z-index: 10 !important;
         text-align: center !important;
@@ -152,6 +151,39 @@
         padding: 0 !important;
     }
 
+    /* =========================================
+       10. PROJECT IMAGE CONSTRAINT ENGINE
+       ========================================= */
+    .spotlight.project-item {
+        display: flex !important;
+        align-items: stretch !important; /* Forces the image box to match the text box height */
+    }
+
+    .spotlight.project-item .content {
+        flex: 1 1 50% !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        /* The text length inside this box will now dictate the height for the entire row */
+    }
+
+    .spotlight.project-item .image {
+        flex: 1 1 50% !important; 
+        position: relative !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .spotlight.project-item .image img {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Crops cleanly to fill the box without squishing the image */
+        border-radius: 0 !important;
+    }
+
     /* Adjust for mobile screens */
     @media screen and (max-width: 980px) {
         .intro { background: #000000 !important; }
@@ -162,10 +194,12 @@
             width: 100% !important;
             text-align: center !important;
             padding: 0 !important;
-            color: #ffffff !important;
         }
-        .intro header p { mix-blend-mode: normal !important; }
         .intro header .actions { flex-direction: column !important; align-items: center !important; }
+        
+        /* Mobile overrides for project sections */
+        .spotlight.project-item { flex-direction: column !important; }
+        .spotlight.project-item .image { min-height: 350px !important; }
     }
 </style>
     </head>
@@ -180,7 +214,6 @@
             <h1><span class="name-first">Allen</span><span class="name-last">Loukiantchenko</span></h1>
             <p>Mechatronics Engineering | Robotics & Manufacturing</p>
             
-            <!-- Button Block (Both are now solid purple) -->
             <ul class="actions">
                 <li><a href="#first" class="button primary scrolly">View My Projects</a></li>
                 <li><a href="resume.html" class="button primary">View & Download Resume</a></li>
@@ -188,9 +221,10 @@
         </header>
     </section>
 
-<!-- Project Sorting Control Bar (This is where the scrolly button brings you) -->
-<section id="first" style="background-color: #000000; text-align: center; padding: 3rem 0 1rem 0;">
-    <button id="sort-btn" class="button small" style="margin: 0 auto;">Sort: Oldest to Newest</button>
+<!-- Project Sorting Control Bar -->
+<section id="first" style="background-color: #000000; text-align: center; padding: 4rem 0 2rem 0;">
+    <!-- Sort button massively upscaled -->
+    <button id="sort-btn" class="button primary" style="font-size: 1.5rem !important; padding: 1rem 2.5rem !important; height: auto !important; line-height: 1.5 !important; margin: 0 auto; letter-spacing: 1px;">Sort: Oldest to Newest</button>
 </section>
 
 <!-- Wrap all projects in this container for the sorting script -->
