@@ -1,446 +1,436 @@
-<!DOCTYPE HTML>
-<!--
-    Paradigm Shift by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-    <head>
-        <title>Allen Loukiantchenko | Portfolio</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allen Loukiantchenko | Portfolio</title>
     <style>
-    /* =========================================
-       CUSTOM BLACK & DARK PURPLE THEME OVERRIDE
-       ========================================= */
-    
-    /* 1. Base Backgrounds & Absolute Nuke of Global Margins (Kills the top black bar completely) */
-    html, body { margin: 0 !important; padding: 0 !important; top: 0 !important; background-color: #000000 !important; color: #ffffff !important; }
-    #wrapper, #page-wrapper { padding: 0 !important; margin: 0 !important; top: 0 !important; background-color: transparent !important; }
-    
-    /* 2. Alternating Section Backgrounds */
-    .spotlight.style1, .spotlight.style3, .wrapper.style1 { background-color: #100118 !important; }
-    .spotlight.style2, .spotlight.style4, .wrapper.style2 { background-color: #000000 !important; }
-    
-    /* 3. Global Typography Normalization */
-    body, p, li, span, label { font-family: 'Arial', sans-serif !important; font-size: 1.1rem !important; line-height: 1.6 !important; color: #ffffff !important; }
-    h1 { font-size: 4.5rem !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; line-height: 1.1 !important; color: #ffffff !important; }
-    h2 { font-size: 2.25rem !important; font-weight: 700 !important; margin-bottom: 1rem !important; color: #ffffff !important; text-transform: uppercase !important; letter-spacing: 2px !important; }
-    h3 { font-size: 1.5rem !important; font-weight: 600 !important; color: #ffffff !important; }
-    
-    /* 4. Button & Accent Normalization */
-    .button, input[type="submit"], input[type="button"], button {
-        font-family: 'Arial', sans-serif !important;
-        font-size: 1.1rem !important; /* Larger, more readable font */
-        font-weight: bold !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        padding: 0.75rem 2rem !important; /* Thicker padding */
-        height: auto !important;
-        line-height: 1.5 !important;
-        border-radius: 0.25rem !important;
-        box-shadow: inset 0 0 0 2px #3a0359 !important; 
-        color: #ffffff !important;
-    }
-    .button.primary, input[type="submit"].primary, button.primary {
-        background-color: #3a0359 !important; 
-        box-shadow: none !important;
-    }
-    .button:hover { background-color: rgba(58, 3, 89, 0.2) !important; }
-    .button.primary:hover { background-color: #550580 !important; }
+        /* =========================================
+           1. CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            --bg-dark: #000000;
+            --bg-purple: #1a032b;
+            --accent-purple: #3a0359;
+            --accent-hover: #550580;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* =========================================
-       5. THE TEAL LINE NUKE
-       ========================================= */
-    /* This completely disables the template's hidden grid lines and accent borders */
-    *, *::before, *::after { border-color: #3a0359 !important; }
-    body::before, body::after, #wrapper::before, #wrapper::after, .intro-wrapper::before, .intro-wrapper::after, .spotlight::before, .spotlight::after { 
-        display: none !important; 
-        content: none !important; 
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* =========================================
-       6. TOP NAVIGATION BAR
-       ========================================= */
-    .top-nav {
-        position: absolute; /* Ensures it ignores all template flow and sits at the very top */
-        top: 0 !important;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff !important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.25rem 4rem;
-        z-index: 1000;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    .top-nav .nav-left { display: flex; gap: 15px; }
+        html, body {
+            width: 100%;
+            font-family: var(--font-stack);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-    /* =========================================
-       7. TWO-COLUMN INTRO LAYOUT
-       ========================================= */
-    .intro-wrapper {
-        background: linear-gradient(to right, #000000 0%, #1a032b 100%) !important;
-        width: 100%;
-        height: 100vh !important; /* Locks intro to exactly 1 viewport height */
-        display: flex;
-        flex-direction: column;
-        padding-top: 100px; /* Offsets for the top nav bar */
-        box-sizing: border-box; /* Ensures padding doesn't add to 100vh */
-        position: relative;
-    }
+        /* =========================================
+           2. TYPOGRAPHY & BUTTONS
+           ========================================= */
+        h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
+        h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        p { font-size: 1.15rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9); }
 
-    /* Central Container spanning the full width */
-    .intro-content-row {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-        justify-content: space-between;
-        flex-grow: 1; /* Expands to fill the space between the top nav and bottom projects bar */
-    }
+        .btn {
+            display: inline-block;
+            font-family: var(--font-stack);
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.85rem 2rem;
+            color: var(--text-main);
+            background-color: var(--accent-purple);
+            border: none;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
 
-    /* Left Side: Text Elements */
-    .intro-text {
-        flex: 1.2;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        padding-left: 15%; /* Perfect 15% margin on the left */
-        padding-right: 2rem;
-    }
-    
-    .intro-text .subtitle {
-        color: rgba(255, 255, 255, 0.7) !important;
-        font-size: 1.1rem !important;
-        font-weight: bold !important;
-        letter-spacing: 2px !important;
-        text-transform: uppercase !important;
-        margin-bottom: 2rem !important;
-    }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
 
-    .intro-separator {
-        width: 100%;
-        max-width: 400px;
-        border: 0;
-        border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
-        margin: 0 0 2rem 0;
-    }
+        .btn-outline {
+            background-color: transparent;
+            box-shadow: inset 0 0 0 2px var(--accent-purple);
+        }
 
-    .about-blurb {
-        color: rgba(255, 255, 255, 0.9) !important;
-    }
+        .btn-outline:hover {
+            background-color: rgba(58, 3, 89, 0.2);
+        }
 
-    /* Right Side: Profile Picture */
-    .intro-image {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end; 
-        align-items: center;
-        padding-right: 15%; /* Perfect 15% margin on the right to mirror the text */
-    }
-    
-    .intro-image img {
-        width: 100%;
-        max-width: 650px; /* Massively scaled up */
-        border-radius: 0.25rem !important; 
-        border: 4px solid #3a0359;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        object-fit: cover;
-        aspect-ratio: 1/1; /* Forces the image to crop perfectly square */
-    }
+        /* =========================================
+           3. TOP NAVIGATION
+           ========================================= */
+        .top-nav {
+            position: fixed; /* Locks to top of viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 4rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
 
-    /* =========================================
-       8. NEW PROJECTS TITLE BAR (Docked to bottom)
-       ========================================= */
-    .projects-bar {
-        margin-top: auto; /* Forces this bar to the absolute bottom of the 100vh flex container */
-        background-color: #ffffff !important;
-        width: 100%;
-        padding: 1.5rem 15%; /* Aligns perfectly with the text and image padding above */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 4px solid #3a0359; 
-    }
+        .nav-left { display: flex; gap: 15px; }
 
-    .projects-bar h2 {
-        color: #000000 !important; /* Force text to black so it shows on white */
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+        /* =========================================
+           4. INTRO SECTION (Full Viewport Height)
+           ========================================= */
+        .intro-section {
+            background: linear-gradient(to right, var(--bg-dark) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px; /* Clears the fixed nav bar */
+        }
 
-    .projects-bar h2 .icon {
-        color: #3a0359 !important; 
-        font-size: 1.75rem;
-    }
+        .intro-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1; /* Pushes the projects bar to the bottom */
+            width: 100%;
+        }
 
-    /* The Sort Button (Condensed and aligned right) */
-    .projects-bar .button {
-        font-size: 1rem !important;
-        padding: 0.5rem 1.5rem !important;
-        margin: 0 !important;
-        width: auto !important;
-    }
+        /* 15% Rule applied perfectly here */
+        .intro-text {
+            flex: 1;
+            padding-left: 15%;
+            padding-right: 2rem;
+        }
 
-    /* =========================================
-       9. PROJECT IMAGE CONSTRAINT ENGINE
-       ========================================= */
-    .spotlight.project-item { display: flex !important; align-items: stretch !important; }
-    .spotlight.project-item .content {
-        flex: 1 1 50% !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-    }
-    .spotlight.project-item .image {
-        flex: 1 1 50% !important; 
-        position: relative !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    .spotlight.project-item .image img {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important; 
-        border-radius: 0 !important;
-    }
+        .intro-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 15%;
+        }
 
-    /* Adjust for mobile screens */
-    @media screen and (max-width: 980px) {
-        .top-nav { position: relative; flex-direction: column; padding: 1.5rem; gap: 15px; text-align: center;}
-        .top-nav .nav-left { flex-direction: column; width: 100%; }
-        .top-nav .button { width: 100%; text-align: center; }
-        
-        .intro-wrapper { padding-top: 0; height: auto !important; min-height: 100vh; }
-        .intro-content-row { flex-direction: column; text-align: center; padding: 4rem 5%; }
-        .intro-text { align-items: center; text-align: center; padding-left: 0; padding-right: 0; margin-bottom: 3rem; }
-        .intro-separator { margin: 0 auto 2rem auto; }
-        
-        .intro-image { justify-content: center; padding-right: 0; }
-        .intro-image img { max-width: 350px; } 
-        
-        .projects-bar { flex-direction: column; text-align: center; gap: 20px; padding: 2rem 5%; }
-        
-        .spotlight.project-item { flex-direction: column !important; }
-        .spotlight.project-item .image { min-height: 350px !important; }
-    }
-</style>
-    </head>
-    <body class="is-preload">
+        .intro-text .subtitle {
+            color: var(--text-muted);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-        <!-- Wrapper -->
-            <div id="wrapper">
+        .intro-separator {
+            width: 100%;
+            max-width: 400px;
+            border: 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.4);
+            margin: 1.5rem 0 2rem 0;
+        }
 
-<!-- ==============================================
-     TOP NAVIGATION BAR
-     ============================================== -->
+        .intro-image img {
+            width: 100%;
+            max-width: 650px;
+            border-radius: 0.25rem;
+            border: 4px solid var(--accent-purple);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        /* =========================================
+           5. PROJECTS TITLE BAR
+           ========================================= */
+        .projects-bar {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 1.5rem 15%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--accent-purple);
+        }
+
+        .projects-bar h2 {
+            color: var(--bg-dark);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .projects-bar .arrow {
+            color: var(--accent-purple);
+            font-size: 2rem;
+        }
+
+        /* =========================================
+           6. PROJECT ZIG-ZAG LAYOUT
+           ========================================= */
+        .project-item {
+            display: flex;
+            align-items: stretch;
+            min-height: 500px;
+        }
+
+        /* Dynamic classes controlled by JavaScript */
+        .project-item.orient-left { flex-direction: row; }
+        .project-item.orient-right { flex-direction: row-reverse; }
+
+        /* Alternating Background Colors */
+        .project-item:nth-child(odd) .project-content { background-color: var(--bg-dark); }
+        .project-item:nth-child(even) .project-content { background-color: #100118; } /* Very dark purple */
+
+        .project-content {
+            flex: 1;
+            padding: 4rem 15%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .project-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================================
+           7. CONTACT SECTION
+           ========================================= */
+        .contact-section {
+            padding: 6rem 15%;
+            background-color: var(--bg-dark);
+            text-align: left;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin-top: 2rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--accent-purple);
+            border-radius: 0.25rem;
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            font-size: 1rem;
+        }
+
+        .contact-form textarea { resize: vertical; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--text-main); }
+
+        .footer-info { margin-top: 3rem; }
+        .footer-info a { color: var(--accent-purple); text-decoration: none; font-weight: bold; }
+        .footer-info a:hover { color: var(--text-main); }
+
+        /* =========================================
+           8. MOBILE RESPONSIVE DESIGN
+           ========================================= */
+        @media screen and (max-width: 1024px) {
+            .top-nav { flex-direction: column; padding: 1rem; gap: 10px; position: relative; }
+            .nav-left { flex-direction: column; width: 100%; }
+            .nav-left .btn, .top-nav > .btn { width: 100%; text-align: center; }
+            
+            .intro-section { height: auto; min-height: 100vh; padding-top: 0; }
+            .intro-content { flex-direction: column; text-align: center; padding: 4rem 5%; }
+            .intro-text { padding: 0; align-items: center; text-align: center; margin-bottom: 3rem; }
+            .intro-image { justify-content: center; padding: 0; }
+            
+            .projects-bar { flex-direction: column; gap: 20px; padding: 2rem 5%; text-align: center; }
+            
+            .project-item.orient-left, .project-item.orient-right { flex-direction: column; }
+            .project-content { padding: 3rem 5%; align-items: center; text-align: center; }
+            .project-image { min-height: 350px; }
+            
+            .contact-section { padding: 4rem 5%; text-align: center; align-items: center;}
+            .contact-form { margin: 2rem auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
     <nav class="top-nav">
         <div class="nav-left">
-            <a href="#projects-bar" class="button primary scrolly">View My Projects</a>
-            <a href="resume.html" class="button primary">View & Download Resume</a>
+            <a href="#projects-bar" class="btn">View My Projects</a>
+            <a href="resume.html" class="btn">View & Download Resume</a>
         </div>
-        <div class="nav-right">
-            <a href="#contact" class="button primary scrolly">Contact Me</a>
-        </div>
+        <a href="#contact" class="btn">Contact Me</a>
     </nav>
 
-<!-- ==============================================
-     UNIFIED INTRO SECTION (2-Column Layout)
-     ============================================== -->
-    <section class="intro-wrapper">
-        <div class="intro-content-row">
+    <!-- INTRO SECTION -->
+    <section class="intro-section">
+        <div class="intro-content">
             
-            <!-- Left Column: Text -->
             <div class="intro-text">
-                <header>
-                    <h1><span class="name-first">Allen</span><br><span class="name-last">Loukiantchenko</span></h1>
-                    <p class="subtitle">Mechatronics Engineering | Robotics & Manufacturing</p>
-                </header>
-
+                <h1>Allen<br>Loukiantchenko</h1>
+                <p class="subtitle">Mechatronics Engineering | Robotics & Manufacturing</p>
+                
                 <hr class="intro-separator" />
-
-                <div class="about-blurb">
-                    <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. From full-stack CAD design in SolidWorks to deploying Inverse Kinematics on microcontrollers, I specialize in taking physical builds from digital theory to functional reality.</p>
-                </div>
+                
+                <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. From full-stack CAD design in SolidWorks to deploying Inverse Kinematics on microcontrollers, I specialize in taking physical builds from digital theory to functional reality.</p>
             </div>
 
-            <!-- Right Column: Picture -->
             <div class="intro-image">
                 <img src="images/profile_picture.jpg" alt="Allen Loukiantchenko" />
             </div>
-
-        </div>
-
-        <!-- ==============================================
-             NEW PROJECTS TITLE BAR (Docked Inside Intro)
-             ============================================== -->
-        <div class="projects-bar" id="projects-bar">
-            <h2>My Projects <span class="icon solid fa-arrow-down"></span></h2>
             
-            <button id="sort-btn" class="button primary">Current Sort: Newest First</button>
+        </div>
+
+        <!-- PROJECTS TITLE BAR -->
+        <div class="projects-bar" id="projects-bar">
+            <h2>My Projects <span class="arrow">&#8595;</span></h2>
+            <button id="sort-btn" class="btn">Current Sort: Newest First</button>
         </div>
     </section>
 
-<!-- ==============================================
-     PROJECT LIST SECTION
-     ============================================== -->
-<div id="projects"> 
+    <!-- PROJECT LIST SECTION -->
+    <div id="projects"> 
 
-    <!-- 1. OMNI Capstone Project -->
-    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>OMNI Modular Robotic Arm</h2>
-            <p>Sep 2025 - Mar 2026</p>
-            <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
-            <ul class="actions stacked">
-                <li><a href="#" class="button">Read Full Case Study</a></li>
-            </ul>
-        </div>
-        <div class="image">
-            <img src="images/your_omni_photo.jpg" alt="OMNI Robotic Arm" />
+        <!-- 1. OMNI Capstone Project -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>OMNI Modular Robotic Arm</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Sep 2025 - Mar 2026</p>
+                <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
+                <div><a href="#" class="btn btn-outline">Read Full Case Study</a></div>
+            </div>
+            <div class="project-image">
+                <img src="images/your_omni_photo.jpg" alt="OMNI Robotic Arm" />
+            </div>
+        </article>
+
+        <!-- 2. Able Innovations -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>Able Innovations</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical Engineer Intern | May 2025 - Aug 2025</p>
+                <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
+            </div>
+            <div class="project-image">
+                <img src="images/able_innovations_photo.jpg" alt="Able Innovations" />
+            </div>
+        </article>
+
+        <!-- 3. Schaeffler / Vitesco -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>Schaeffler / Vitesco</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">R&D Engineer Intern | Jan 2025 - Apr 2025</p>
+                <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
+            </div>
+            <div class="project-image">
+                <img src="images/pic03.jpg" alt="Schaeffler" />
+            </div>
+        </article>
+
+        <!-- 4. Stewart Platform -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>Stewart Platform</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Project | Sep 2024 - Dec 2024</p>
+                <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
+            </div>
+            <div class="project-image">
+                <img src="images/stewart_platform.jpg" alt="Stewart Platform" />
+            </div>
+        </article>
+
+        <!-- 5. Tesla -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>Tesla</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Process Engineer Intern | Sep 2023 - Dec 2023</p>
+                <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
+            </div>
+            <div class="project-image">
+                <img src="images/pic04.jpg" alt="Tesla" />
+            </div>
+        </article>
+        
+        <!-- 6. Polycorp -->
+        <article class="project-item">
+            <div class="project-content">
+                <h2>Polycorp</h2>
+                <p style="color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem;">Mechanical/Manufacturing Intern | Jan 2023 - Apr 2023</p>
+                <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
+            </div>
+            <div class="project-image">
+                <img src="images/polycorp.jpg" alt="Polycorp" />
+            </div>
+        </article>
+
+    </div> <!-- End of Project List -->
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <h2>Get in touch</h2>
+        <p><strong>Available for Fall 2026 Opportunities.</strong> Whether you have a question about my robotic arm mechanisms, want to discuss manufacturing optimizations, or have a potential role, my inbox is always open.</p>
+        
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="message" placeholder="Message" rows="6" required></textarea>
+            <div>
+                <button type="submit" class="btn">Send Message</button>
+            </div>
+        </form>
+
+        <div class="footer-info">
+            <p>Email: <a href="mailto:allen.loukiantchenko@gmail.com">allen.loukiantchenko@gmail.com</a></p>
+            <p>Phone: <a href="tel:6479496867">(647) 949-6867</a></p>
+            <br>
+            <p>&copy; 2026 Allen Loukiantchenko. Custom Built.</p>
         </div>
     </section>
 
-    <!-- 2. Able Innovations -->
-    <section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>Able Innovations</h2>
-            <p>Mechanical Engineer Intern | May 2025 - Aug 2025</p>
-            <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
-        </div>
-        <div class="image">
-            <img src="images/able_innovations_photo.jpg" alt="" />
-        </div>
-    </section>
-
-    <!-- 3. Schaeffler / Vitesco -->
-    <section class="spotlight style3 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>Schaeffler / Vitesco</h2>
-            <p>R&D Engineer Intern | Jan 2025 - Apr 2025</p>
-            <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
-        </div>
-        <div class="image">
-            <img src="images/pic03.jpg" alt="" />
-        </div>
-    </section>
-
-    <!-- 4. Stewart Platform -->
-    <section class="spotlight style4 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>Stewart Platform</h2>
-            <p>Project | Sep 2024 - Dec 2024</p>
-            <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
-        </div>
-        <div class="image">
-            <img src="images/stewart_platform.jpg" alt="Stewart Platform" />
-        </div>
-    </section>
-
-    <!-- 5. Tesla -->
-    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>Tesla</h2>
-            <p>Process Engineer Intern | Sep 2023 - Dec 2023</p>
-            <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
-        </div>
-        <div class="image">
-            <img src="images/pic04.jpg" alt="" />
-        </div>
-    </section>
-    
-    <!-- 6. Polycorp -->
-    <section class="spotlight style2 orient-left content-align-left image-position-center onscroll-image-fade-in project-item">
-        <div class="content">
-            <h2>Polycorp</h2>
-            <p>Mechanical/Manufacturing Engineer Intern | Jan 2023 - Apr 2023</p>
-            <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
-        </div>
-        <div class="image">
-            <img src="images/polycorp.jpg" alt="Polycorp Manufacturing" />
-        </div>
-    </section>
-
-</div> <!-- End of Project List -->
-
-<!-- ==============================================
-     CONTACT SECTION
-     ============================================== -->
-    <section id="contact">
-        <header>
-            <h2>Get in touch</h2>
-        </header>
-        <div class="content">
-            <p><strong>Available for Fall 2026 Opportunities.</strong> Whether you have a question about my robotic arm mechanisms, want to discuss manufacturing optimizations, or have a potential role, my inbox is always open.</p>
-            <form>
-                <div class="fields">
-                    <div class="field half">
-                        <input type="text" name="name" id="name" placeholder="Name" />
-                    </div>
-                    <div class="field half">
-                        <input type="email" name="email" id="email" placeholder="Email" />
-                    </div>
-                    <div class="field">
-                        <textarea name="message" id="message" placeholder="Message" rows="7"></textarea>
-                    </div>
-                </div>
-                <ul class="actions">
-                    <li><input type="submit" value="Send Message" class="button primary" /></li>
-                </ul>
-            </form>
-        </div>
-        <footer>
-            <ul class="items">
-                <li>
-                    <h3>Email</h3>
-                    <a href="mailto:allen.loukiantchenko@gmail.com">allen.loukiantchenko@gmail.com</a>
-                </li>
-                <li>
-                    <h3>Phone</h3>
-                    <a href="tel:6479496867">(647) 949-6867</a>
-                </li>
-                <li>
-                    <h3>Elsewhere</h3>
-                    <ul class="icons">
-                        <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                    </ul>
-                </li>
-            </ul>
-        </footer>
-    </section>
-
-<!-- Copyright -->
-    <div class="copyright">&copy; Allen Loukiantchenko. Design adapted from: <a href="https://html5up.net">HTML5 UP</a>.</div>
-
-</div> <!-- End of Wrapper -->
-
-<!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    
-    <!-- Custom Sorting Engine -->
+    <!-- SORTING ENGINE SCRIPT -->
     <script>
         let isNewestFirst = true;
         
+        function applyZigZag() {
+            const projectsArray = Array.from(document.getElementsByClassName('project-item'));
+            projectsArray.forEach((proj, index) => {
+                // Clear existing orientation classes
+                proj.classList.remove('orient-right', 'orient-left');
+                // Apply alternating classes
+                if (index % 2 === 0) {
+                    proj.classList.add('orient-left'); // Image on right, text on left
+                } else {
+                    proj.classList.add('orient-right'); // Image on left, text on right
+                }
+            });
+        }
+
+        // Run once on load to establish the initial layout
+        applyZigZag();
+
         document.getElementById('sort-btn').addEventListener('click', function(e) {
             e.preventDefault();
             isNewestFirst = !isNewestFirst;
@@ -450,21 +440,13 @@
             const list = document.getElementById('projects');
             const projectsArray = Array.from(list.getElementsByClassName('project-item'));
 
-            projectsArray.reverse();
+            // Reverse the DOM nodes
+            projectsArray.reverse().forEach(proj => list.appendChild(proj));
 
-            projectsArray.forEach((proj, index) => {
-                proj.classList.remove('orient-right', 'orient-left', 'style1', 'style2', 'style3', 'style4');
-                
-                if (index % 2 === 0) {
-                    proj.classList.add('orient-right', 'style' + ((index % 3) + 1));
-                } else {
-                    proj.classList.add('orient-left', 'style' + ((index % 3) + 1));
-                }
-                
-                list.appendChild(proj);
-            });
+            // Re-apply the zig-zag layout so it always stays perfectly alternating
+            applyZigZag();
         });
     </script>
 
-    </body>
+</body>
 </html>
