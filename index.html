@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen Loukiantchenko | Portfolio</title>
     
-    <!-- Google Fonts: Montserrat for Headings, Inter for Body Text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
@@ -19,13 +18,12 @@
             --bg-purple: #1a032b;
             --accent-purple: #3a0359;
             --accent-hover: #550580;
-            --accent-orange: #FF9F1C; /* New Complementary Contrast Color */
+            --accent-orange: #FF9F1C; 
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.7);
             
-            /* Custom Typography Variables */
-            --font-headings: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --font-headings: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,12 +48,12 @@
 
         .btn {
             display: inline-block;
-            font-family: var(--font-headings); /* Buttons use heading font for punchiness */
-            font-size: 1rem;
+            font-family: var(--font-headings); 
+            font-size: 1.2rem; 
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0.85rem 2rem;
+            padding: 1rem 2.5rem; 
             color: var(--text-main);
             background-color: var(--accent-purple);
             border: none;
@@ -86,14 +84,14 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
+        .top-nav .btn { font-size: 1rem; padding: 0.75rem 1.5rem; }
         .nav-left { display: flex; gap: 15px; }
 
         /* =========================================
            4. INTRO SECTION 
            ========================================= */
         .intro-section {
-            /* Upgraded to an angled gradient for depth */
-            background: linear-gradient(135deg, var(--bg-dark) 30%, var(--bg-purple) 100%);
+            background: radial-gradient(circle at 75% 50%, var(--bg-purple) 0%, var(--bg-dark) 70%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -109,18 +107,8 @@
             width: 100%;
         }
 
-        .intro-text {
-            flex: 1;
-            padding-left: 15%;
-            padding-right: 2rem;
-        }
-
-        .intro-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 15%;
-        }
+        .intro-text { flex: 1; padding-left: 15%; padding-right: 2rem; }
+        .intro-image { flex: 1; display: flex; justify-content: flex-end; padding-right: 15%; }
 
         .intro-text .subtitle {
             color: var(--text-muted);
@@ -137,20 +125,19 @@
             margin: 1.5rem 0;
         }
 
-        /* Formatting for the new availability blurb */
         .availability-blurb {
             color: var(--accent-orange);
-            font-weight: 600;
+            font-family: var(--font-body); 
+            font-weight: 700;
             font-size: 1.25rem;
-            margin-bottom: 0; /* Keeps it tight to the separator */
+            margin-bottom: 0; 
         }
 
         .intro-image img {
             width: 100%;
             max-width: 650px;
             border-radius: 0.25rem;
-            border: 4px solid var(--accent-purple);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 30px rgba(58, 3, 89, 0.3);
             object-fit: cover;
             aspect-ratio: 1/1;
         }
@@ -172,17 +159,15 @@
             color: var(--bg-dark);
             margin: 0;
             display: flex;
-            align-items: center;
-            gap: 12px;
+            align-items: center; 
+            gap: 15px; 
         }
 
-        .projects-bar .arrow {
-            color: var(--accent-purple);
-            font-size: 2rem;
-        }
+        .projects-bar .arrow { color: var(--accent-purple); font-size: 2.5rem; line-height: 1; }
+        .projects-bar .btn { font-size: 1rem; padding: 0.75rem 1.5rem; }
 
         /* =========================================
-           6. PROJECT ZIG-ZAG LAYOUT & LOGOS
+           6. PROJECT ZIG-ZAG LAYOUT
            ========================================= */
         .project-item { display: flex; align-items: stretch; min-height: 500px; }
         .project-item.orient-left { flex-direction: row; }
@@ -218,11 +203,10 @@
             padding: 2px;
         }
 
-        /* High contrast metadata class */
         .project-meta {
             color: var(--accent-orange);
-            font-family: var(--font-headings);
-            font-size: 1rem;
+            font-family: var(--font-body); 
+            font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -233,42 +217,136 @@
         .project-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 
         /* =========================================
-           7. CONTACT SECTION
+           7. CASE STUDY MODAL (BLOG SYSTEM)
            ========================================= */
-        .contact-section {
-            padding: 6rem 15%;
-            background-color: var(--bg-dark);
-            text-align: left;
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .contact-form {
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        .modal-container {
+            background-color: var(--bg-dark);
+            border: 2px solid var(--accent-purple);
+            border-radius: 0.5rem;
+            width: 95%; 
+            max-width: 1400px; 
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 4rem; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 2.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover { color: var(--accent-orange); }
+
+        .modal-content-block { display: none; }
+        .modal-content-block.active { display: block; }
+        
+        .modal-content-block h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: row;
+            gap: 4rem; 
+            align-items: flex-start; 
+        }
+
+        .modal-text {
+            flex: 1.5; 
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            max-width: 600px;
-            margin-top: 2rem;
+            gap: 1.5rem; 
         }
 
-        .contact-form input, .contact-form textarea {
+        .modal-text p { margin-bottom: 0; font-size: 1.2rem; }
+        .modal-text h3 { margin-top: 1rem; color: var(--accent-orange); }
+
+        /* --- NEW MODAL LIST STYLES --- */
+        .modal-text ul {
+            list-style-type: disc;
+            padding-left: 2rem; /* Indents the bullets perfectly */
+            margin-bottom: 1.5rem; /* Matches the spacing of paragraphs */
+        }
+
+        .modal-text li {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem; /* Gives space between each bullet */
+            line-height: 1.6;
+        }
+
+        /* Makes the bullet dot itself orange for a custom UI touch */
+        .modal-text li::marker {
+            color: var(--accent-orange);
+        }
+
+        .modal-gallery {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; 
+            position: sticky; 
+            top: 0;
+        }
+
+        .modal-gallery img, .modal-gallery video {
             width: 100%;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
             border: 2px solid var(--accent-purple);
-            border-radius: 0.25rem;
-            color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+            background-color: #000; 
         }
 
+        /* =========================================
+           8. CONTACT SECTION
+           ========================================= */
+        .contact-section { padding: 6rem 15%; background-color: var(--bg-dark); text-align: left; }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin-top: 2rem; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 1rem; background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--accent-purple); border-radius: 0.25rem;
+            color: var(--text-main); font-family: var(--font-body); font-size: 1rem;
+        }
         .contact-form textarea { resize: vertical; }
         .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--text-main); }
-
         .footer-info { margin-top: 3rem; }
         .footer-info a { color: var(--accent-purple); text-decoration: none; font-weight: bold; }
         .footer-info a:hover { color: var(--text-main); }
 
         /* =========================================
-           8. MOBILE RESPONSIVE DESIGN
+           9. MOBILE RESPONSIVE DESIGN
            ========================================= */
         @media screen and (max-width: 1024px) {
             .top-nav { flex-direction: column; padding: 1rem; gap: 10px; position: relative; }
@@ -281,11 +359,15 @@
             .intro-image { justify-content: center; padding: 0; }
             
             .projects-bar { flex-direction: column; gap: 20px; padding: 2rem 5%; text-align: center; }
-            
             .project-header { justify-content: center; } 
+            
             .project-item.orient-left, .project-item.orient-right { flex-direction: column; }
             .project-content { padding: 3rem 5%; align-items: center; text-align: center; }
             .project-image { min-height: 350px; }
+            
+            .modal-container { padding: 2rem 1.5rem; }
+            .modal-body { flex-direction: column; gap: 2rem; }
+            .modal-gallery { position: relative; } 
             
             .contact-section { padding: 4rem 5%; text-align: center; align-items: center;}
             .contact-form { margin: 2rem auto; }
@@ -294,7 +376,6 @@
 </head>
 <body id="top"> 
 
-    <!-- TOP NAVIGATION BAR -->
     <nav class="top-nav">
         <div class="nav-left">
             <a href="#top" class="btn">Home</a>
@@ -304,84 +385,72 @@
         <a href="#contact" class="btn">Contact Me</a>
     </nav>
 
-    <!-- INTRO SECTION -->
     <section class="intro-section">
         <div class="intro-content">
-            
             <div class="intro-text">
                 <h1>Allen<br>Loukiantchenko</h1>
-                <p class="subtitle">Mechatronics Engineering | Robotics & Manufacturing</p>
-                
+                <p class="subtitle">Mechatronics Engineer | Robotics & Manufacturing</p>
                 <hr class="intro-separator" />
-                
-                <p>I am a Mechatronics Engineering student passionate about designing adaptable robotic systems, optimizing complex manufacturing processes, and bridging the gap between mechanical hardware and software control. From full-stack CAD design in SolidWorks to deploying Inverse Kinematics on microcontrollers, I specialize in taking physical builds from digital theory to functional reality.</p>
-                
+                <p> We are living on the precipice of a robotics revolution, and I am thrilled to be in the midst of it. <br>
+                    As a mechatronics engineer, I have been keenly aware of how the modern world is being irrevocably altered by the advent of AI and modern robotics over the last few years, be it in the fields of agentic software, manufacturing, or direct product design. <br>
+                    I love taking complex projects from the brainstorm phase and into reality, seeing how a design comes to life, and (even if in a small way) using these designs to help benefit all of humanity.</p>
                 <hr class="intro-separator" style="margin-bottom: 1.5rem;" />
                 <p class="availability-blurb">Available for Fall 2026 Opportunities</p>
             </div>
-
             <div class="intro-image">
-                <img src="images/profile_picture.jpg" alt="Allen Loukiantchenko" />
+                <img src="images/PFP.jpg" alt="Allen Loukiantchenko" />
             </div>
-            
         </div>
 
-        <!-- PROJECTS TITLE BAR -->
         <div class="projects-bar" id="projects-bar">
             <h2>My Projects <span class="arrow">&#8595;</span></h2>
             <button id="sort-btn" class="btn">Current Sort: Newest First</button>
         </div>
     </section>
 
-    <!-- PROJECT LIST SECTION -->
     <div id="projects"> 
 
-        <!-- 1. OMNI Capstone Project -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
                     <h2>OMNI Modular Robotic Arm</h2>
                 </div>
                 <p class="project-meta">Sep 2025 - Mar 2026</p>
-                <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration within 1 minute.</p>
-                <div><a href="#" class="btn btn-outline">Read Full Case Study</a></div>
+                <p>Designed a 5-DOF adaptable robotic manipulator system using SolidWorks. Fabricated modular joints utilizing 3D-printed PETG bushings, bayonet mounts, and plunger pins to maintain concentricity and allow for rapid physical modularity. Programmed automatic Inverse Kinematics Algorithms for servo motors using Raspberry Pi and STM32 controllers, resulting in rapid arm reconfiguration.</p>
+                
+                <button class="btn btn-outline" onclick="openModal('modal-omni')">Read More</button>
             </div>
-            <div class="project-image">
-                <img src="images/OMNI_Main_Pic.jpg" alt="OMNI Robotic Arm" />
-            </div>
+            <div class="project-image"><img src="images/OMNI/OMNI_1.jpg" alt="OMNI Robotic Arm" /></div>
         </article>
 
-        <!-- 2. Able Innovations -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/able_logo.jpg" alt="Able Innovations" class="company-logo" />
+                    <img src="images/Able/Able_Logo.jpg" alt="Able Innovations" class="company-logo" />
                     <h2>Able Innovations</h2>
                 </div>
                 <p class="project-meta">Mechanical Engineer Intern | May 2025 - Aug 2025</p>
-                <p>Designed automated patient transfer system components using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools, resulting in minimized equipment downtime. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
+                <p>Directly worked on the design of an automated patient transfer system, creating new components and making improvements using SolidWorks, resulting in reduced manufacturing complexity and cost savings. Fabricated rapid prototype solutions for on-site breakdowns using CAD and machine tools. Analyzed manufacturing workflows alongside the production team to increase operational efficiency and improved operator ergonomics.</p>
+                
+                <!-- <button class="btn btn-outline" onclick="openModal('modal-able')">Read More</button> -->
             </div>
-            <div class="project-image">
-                <img src="images/able_innovations_photo.jpg" alt="Able Innovations" />
-            </div>
+            <div class="project-image"><img src="images/Able/Able_1.jpg" alt="Able Innovations" /></div>
         </article>
 
-        <!-- 3. Schaeffler / Vitesco -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/schaeffler_logo.jpg" alt="Schaeffler" class="company-logo" />
+                    <img src="images/Schaeffler/Schaeffler_Logo.jpg" alt="Schaeffler" class="company-logo" />
                     <h2>Schaeffler / Vitesco</h2>
                 </div>
                 <p class="project-meta">R&D Engineer Intern | Jan 2025 - Apr 2025</p>
                 <p>Designed A and B sample prototypes using Catia and stack-up analysis, resulting in client-compliant dimensional fits. Analyzed CMM and durability test data using Minitab and Excel, resulting in the successful diagnosis of leakage failures in automotive coolant flow control valves. Calculated performance differences between ETF and ULV oils with respect to thermoplastics and seals.</p>
+                
+                <button class="btn btn-outline" onclick="openModal('modal-schaeffler')">Read More</button>
             </div>
-            <div class="project-image">
-                <img src="images/pic03.jpg" alt="Schaeffler" />
-            </div>
+            <div class="project-image"><img src="images/Schaeffler/Schaeffler_0.jpg" alt="Schaeffler" /></div>
         </article>
 
-        <!-- 4. Stewart Platform -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
@@ -389,45 +458,42 @@
                 </div>
                 <p class="project-meta">Project | Sep 2024 - Dec 2024</p>
                 <p>Designed a platform capable of automatic ball balancing alongside a multidisciplinary team, resulting in comprehensive mechanical, hardware, and software integration. Manufactured platform components using SolidWorks, 3D printing, and laser cutting. Programmed feedback control systems using PID algorithms, Arduino, and Raspberry Pi, resulting in enhanced responsiveness and accurate camera-based ball tracking.</p>
+                
+                <button class="btn btn-outline" onclick="openModal('modal-stewart')">Read More</button>
             </div>
-            <div class="project-image">
-                <img src="images/stewart_platform.jpg" alt="Stewart Platform" />
-            </div>
+            <div class="project-image"><img src="images/Stewart_Platform/Stewart_1.jpg" alt="Stewart Platform" /></div>
         </article>
 
-        <!-- 5. Tesla -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/tesla_logo.jpg" alt="Tesla" class="company-logo" />
+                    <img src="images/Tesla/Tesla_Logo.jpg" alt="Tesla" class="company-logo" />
                     <h2>Tesla</h2>
                 </div>
                 <p class="project-meta">Process Engineer Intern | Sep 2023 - Dec 2023</p>
-                <p>Designed improved manufacturing jigs using SolidWorks, resulting in drastically reduced safety incidents and improved ergonomics for EV drivetrain assembly lines. Created optimized jig solutions by consulting stakeholders, resulting in significant cost savings. Fabricated iterative jig prototypes using 3D Printing, resulting in reduced cycle time for EV door-line window assembly.</p>
-            </div>
-            <div class="project-image">
-                <img src="images/pic04.jpg" alt="Tesla" />
-            </div>
+                <p>Saved cost and cycle times in General Assembly plany by designing improved manufacturing jigs using SolidWorks and updating existing processes, resulting in improvements across multiple manufacturing lines including drivetrain, door-line window, trim, etc. Drastically reduced safety incidents and improved ergonomics for specific high-risk/complaint processes, esnuring production associate needs were being properly met.</p>
+                
+                </div>
+            <div class="project-image"><img src="images/Tesla/Tesla_1.jpg" alt="Tesla" /></div>
         </article>
         
-        <!-- 6. Polycorp -->
         <article class="project-item">
             <div class="project-content">
                 <div class="project-header">
-                    <img src="images/polycorp_logo.jpg" alt="Polycorp" class="company-logo" />
+                    <img src="images/Polycorp/Polycorp_Logo.jpg" alt="Polycorp" class="company-logo" />
                     <h2>Polycorp</h2>
                 </div>
                 <p class="project-meta">Mechanical/Manufacturing Intern | Jan 2023 - Apr 2023</p>
                 <p>Designed reverse-engineered CAD models using SolidWorks, resulting in component compatibility across legacy and modern parts. Iteratively developed unique operational jigs using SolidWorks and machine tools, resulting in resolved safety hazards and increased manufacturing efficiency across various rubber press and calender processes.</p>
+                
+                <!-- <button class="btn btn-outline" onclick="openModal('modal-polycorp')">Read More</button> -->
             </div>
-            <div class="project-image">
-                <img src="images/polycorp.jpg" alt="Polycorp" />
-            </div>
+            <div class="project-image"><img src="images/Polycorp/Polycorp_2.jpg" alt="Polycorp" /></div>
+            <div class="project-image"><img src="images/Polycorp/Polycorp_3.jpg" alt="Polycorp" /></div>
         </article>
 
-    </div> <!-- End of Project List -->
+    </div>
 
-    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
         <h2>Get in touch</h2>
         <p><strong>Available for Fall 2026 Opportunities.</strong> Whether you have a question about my robotic arm mechanisms, want to discuss manufacturing optimizations, or have a potential role, my inbox is always open.</p>
@@ -449,8 +515,130 @@
         </div>
     </section>
 
-    <!-- SORTING ENGINE SCRIPT -->
+    <div id="case-study-overlay" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div id="modal-omni" class="modal-content-block">
+                <h2>OMNI Modular Robotic Arm - Case Study</h2>
+                
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <h3>Context</h3>
+                        <p>Coming into this project I had little tangible robotics work experience, but nonetheless for the longest time I have been interested in bringing a modular robotic arm to the industrial space. When embarking on my capstone project that was exactly the plan, but after consultation with experts and advisors my group decided to make a modular robotic arm for an educational setting.</p>
+                        
+                        <h3>The Goal</h3>
+                        <p>When designing the OMNI arm, the primary hurdle was creating a physical system that could be reconfigured on the fly without losing structural integrity and staying easy to use. Most educational robotic arms are rigid; OMNI needed to be modular.</p>
+                        
+                        <h3>Mechanical Design & Materials</h3>
+                        <p>To solve this, I designed a unique bayonet mounting system. While steel was considered for the links, aluminum tubing was ultimately selected to reduce the moment of inertia and alleviate stress on the servo motors during rapid movements. To ensure smooth rotation without the cost of high-end bearings, I designed 3D-printed PETG bushings, which esnured concentricity, provided excellent wear resistance, and helped soften the effects of improper tolerance stackups from the machined parts.</p>
+
+                        <h3>Kinematics & Controls</h3>
+                        <p>The hardware is controlled via a combination of a Raspberry Pi and STM32 microcontrollers. A user needs to simply input the present configuration and the Pi does the rest, using a robust Inverse Kinematics algorithm, it can automatically calculate the necessary joint angles for any spatial coordinate, adapting instantly when physical links are added or removed.</p>
+                            
+                        <h3>Takeaways</h3>
+                        <p>The project was quite effective despite our significant time and budgetary constraints. That being said, there are lots of things I would change to further improve the design, so a 2nd Revision might look something like this:</p>
+                        <ul>
+                            <li>All/mostly plastic body to further reduce weight and lower cost of manufacturing</li>
+                            <li>Integrate custom made PCB's for each joint, saving space and cost on redundant microcontrollers as well as improve performance by allowing for unique ID's and more nuanced communication between joints</li>
+                            <li>A custom-made end effector adapter that allows for a wide variety of end effectors to be used without significant modifications required by the user</li>
+                            <li>Improved electrical connections, allowing for more seamless and reliable connection, preferably as part of the joint mating process rather than use cables</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-gallery">
+                        <video src="images/OMNI/OMNI_Moving.mp4" autoplay loop muted controls></video>
+                        <img src="images/OMNI/OMNI_2.jpg" alt="OMNI Arm Structure">
+                        <img src="images/OMNI/OMNI_3.jpg" alt="OMNI Arm Structure">
+                        <img src="images/OMNI/OMNI_1.jpg" alt="OMNI Arm Structure">
+                        <img src="images/OMNI/OMNI_4.jpg" alt="OMNI Arm Structure">
+                        <img src="images/OMNI/OMNI_5.jpg" alt="OMNI Arm Structure">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="modal-able" class="modal-content-block">
+                <h2>Able Innovations - Engineering Details</h2>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <p>Add your deeper dive into the rapid prototyping solutions and patient transfer mechanisms you developed here. You can use the exact same h3 and p tag structure as the OMNI modal above!</p>
+                    </div>
+                    <div class="modal-gallery">
+                        <img src="images/Able/Able_1.jpg" alt="Able Innovations Detail">
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-schaeffler" class="modal-content-block">
+                <h2>Schaeffler / Vitesco - R&D Deep Dive</h2>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <ul>
+                            <li> Diagnosed warranty issues with CFCV (Coolant Flow Control Valves) by analyzing CT Scans using Lumafield and creating detailed excel calculators to develop measurement test data, helping to identify trends and potential issues for specific products</li>
+                            <li> Devloped A Sample prototype of new oil pump design, working directly with design teams to meet customer requirements and improving on previous designs to reduce leakage and improve performance</li>
+                            <li> Created detailed drawings of A sample parts for manufacturing at in-house facility and ensure consistency with ongoing B sample design</li>
+                            <li> Supported B sample design team by running analysis on gerotor surface tolerancing, comparing theoretical values with actual manufacturer measurements to further design decisionsli>
+                        </ul>
+                    </div>
+                    <div class="modal-gallery">
+                        <img src="images/Schaeffler/Schaeffler_1.jpg" alt="Schaeffler Detail">
+                        <img src="images/Schaeffler/Schaeffler_2.jpg" alt="Schaeffler Detail">
+                        <img src="images/Schaeffler/Schaeffler_3.jpg" alt="Schaeffler Detail">
+                        <img src="images/Schaeffler/Schaeffler_4.jpg" alt="Schaeffler Detail">
+                        <img src="images/Schaeffler/Schaeffler_5.jpg" alt="Schaeffler Detail">
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-stewart" class="modal-content-block">
+                <h2>Stewart Platform - Kinematics & Code</h2>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <ul>
+                            <li> Designed custom motor fixture and linkages to transmit rotation from the shaft to lateral motion of one side of a hexagonal platform</li>
+                            <li> Used 3D printed and acrylic materials to create cheap and easy to work with components for prototype work</li>
+                            <li> Integrated feedback control systems using a camera for ball tracking and PID algorithms, using an arduino and Raspberry Pi to enhance responsiveness</li>
+                        </ul>                    </div>
+                    <div class="modal-gallery">
+                        <video src="images/Stewart_Platform/Stewart_Moving.mp4" autoplay loop muted controls></video>
+                        <img src="images/Stewart_Platform/Stewart_2.jpg" alt="Stewart Platform Detail">
+                        <img src="images/Stewart_Platform/Stewart_3.jpg" alt="Stewart Platform Detail">
+                        <img src="images/Stewart_Platform/Stewart_4.jpg" alt="Stewart Platform Detail">
+                        <img src="images/Stewart_Platform/Stewart_5.jpg" alt="Stewart Platform Detail">
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-tesla" class="modal-content-block">
+                <h2>Tesla - Process Engineering</h2>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <p>Elaborate on the specific EV drivetrain assembly lines and how your 3D printed jigs reduced cycle times.</p>
+                    </div>
+                    <div class="modal-gallery">
+                        <img src="images/Tesla_1.jpg" alt="Tesla Detail">
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-polycorp" class="modal-content-block">
+                <h2>Polycorp - Reverse Engineering</h2>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <p>Talk about the specific legacy parts you reverse-engineered and the manufacturing hurdles you solved.</p>
+                    </div>
+                    <div class="modal-gallery">
+                        <img src="images/Polycorp/Polycorp_1.jpg" alt="Polycorp Detail">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
     <script>
+        // --- Sorting Engine ---
         let isNewestFirst = true;
         
         function applyZigZag() {
@@ -464,20 +652,57 @@
                 }
             });
         }
-
         applyZigZag();
 
         document.getElementById('sort-btn').addEventListener('click', function(e) {
             e.preventDefault();
             isNewestFirst = !isNewestFirst;
-            
             this.innerText = isNewestFirst ? "Current Sort: Newest First" : "Current Sort: Oldest First";
-
             const list = document.getElementById('projects');
             const projectsArray = Array.from(list.getElementsByClassName('project-item'));
-
             projectsArray.reverse().forEach(proj => list.appendChild(proj));
             applyZigZag();
+        });
+
+        // --- Modal Engine ---
+        const overlay = document.getElementById('case-study-overlay');
+        const contentBlocks = document.querySelectorAll('.modal-content-block');
+
+        // Target all video elements inside modals to control playback
+        const allVideos = document.querySelectorAll('.modal-content-block video');
+
+        function openModal(modalId) {
+            contentBlocks.forEach(block => block.classList.remove('active'));
+            document.getElementById(modalId).classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Automatically play video if one exists in the opened modal
+            const videoInModal = document.querySelector('#' + modalId + ' video');
+            if(videoInModal) {
+                let playPromise = videoInModal.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Video playback caught an error (likely a broken file path):", error);
+                    });
+                }
+            }
+        }
+
+        function closeModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Pause all videos so they don't keep playing audio/using resources in the background
+            allVideos.forEach(video => video.pause());
+        }
+
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
         });
     </script>
 

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen Loukiantchenko | Resume</title>
     
-    <!-- Syncing Typography with Index -->
+    <!-- Synced with Index Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
@@ -20,8 +20,8 @@
             --accent-purple: #3a0359;
             --accent-hover: #550580;
             --text-main: #ffffff;
-            --font-headings: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --font-headings: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,8 +31,8 @@
             height: 100vh;
             overflow: hidden; 
             font-family: var(--font-body);
-            /* Matching angled gradient for visual consistency */
-            background: linear-gradient(135deg, var(--bg-dark) 30%, var(--bg-purple) 100%);
+            /* Centered spotlight gradient for the resume page */
+            background: radial-gradient(circle at 50% 0%, var(--bg-purple) 0%, var(--bg-dark) 80%);
             color: var(--text-main);
             line-height: 1.6;
         }
@@ -54,11 +54,11 @@
         .btn {
             display: inline-block;
             font-family: var(--font-headings);
-            font-size: 1rem;
+            font-size: 1.2rem; /* Scaled up 30% */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0.85rem 2rem;
+            padding: 1rem 2.5rem;
             color: var(--text-main);
             background-color: var(--accent-purple);
             border: none;
@@ -88,6 +88,11 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
+        .top-nav .btn {
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+        }
+
         .nav-left { display: flex; gap: 15px; }
 
         /* =========================================
@@ -111,7 +116,7 @@
             min-height: 0; 
             border: 4px solid var(--accent-purple);
             border-radius: 0.25rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 30px rgba(58, 3, 89, 0.3); 
             margin-bottom: 1.5rem;
             background-color: #fff; 
         }
